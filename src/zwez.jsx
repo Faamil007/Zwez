@@ -3,17 +3,11 @@ import { FiSun, FiMoon, FiArrowRight, FiCheck, FiMessageSquare, FiMail, FiPhone 
 import "./index.css";
 
 const services = {
-    "_Tech Services": [
+    "Tech Services": [
         { name: "Device Setup", price: "AED 50", time: "15 mins", popular: true },
         { name: "WiFi/Router Fix", price: "AED 60", time: "30 mins" },
         { name: "Software Help", price: "AED 45", time: "25 mins" }
     ],
-    get "Tech Services"() {
-        return this["_Tech Services"];
-    },
-    set "Tech Services"(value) {
-        this["_Tech Services"] = value;
-    },
   "Errands & Delivery": [
     { name: "Grocery Drop", price: "AED 30", time: "60 mins", popular: true },
     { name: "Parcel Pickup", price: "AED 40", time: "45 mins" },
