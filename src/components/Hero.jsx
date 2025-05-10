@@ -11,7 +11,7 @@ export default function Hero({ scrollToForm }) {
           in Dubai
         </h1>
         <p className="hero-subtitle">
-          Reliable, professional help for your tech, home, errands and special requests
+        "Your personal techie, assistant, and problem-solver – all in one call."
         </p>
         <div className="hero-actions">
           <button className="primary-button" onClick={scrollToForm}>
