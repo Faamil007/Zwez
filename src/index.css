@@ -382,9 +382,32 @@ button {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns */
   gap: 24px;
 }
+
+/* First three cards will automatically take the first row */
+
+/* Position the next two cards */
+.service-card:nth-child(4) {
+  grid-column: 1 / 2;
+}
+
+.service-card:nth-child(5) {
+  grid-column: 3 / 4;
+}
+
+/* If you want the bottom two cards centered together */
+/* Alternative approach for the bottom two cards */
+/*
+.service-card:nth-child(4) {
+  grid-column: 2 / 3;
+}
+
+.service-card:nth-child(5) {
+  grid-column: 2 / 3;
+}
+*/
 
 .service-card {
   background: var(--card-bg);
