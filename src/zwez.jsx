@@ -3,7 +3,7 @@ import { FiSun, FiMoon, FiArrowRight, FiCheck, FiMessageSquare, FiMail, FiPhone 
 import "./index.css";
 
 const services = {
-    "Tech Services": [
+  "Tech Services": [
         { name: "Device Setup", price: "AED 50", time: "15 mins", popular: true },
         { name: "WiFi/Router Fix", price: "AED 60", time: "30 mins" },
         { name: "Software Help", price: "AED 45", time: "25 mins" }
@@ -18,11 +18,6 @@ const services = {
     { name: "Furniture Assembly", price: "AED 100", time: "2 hrs", popular: true },
     { name: "Light Installation", price: "AED 55", time: "45 mins" }
   ],
-  "Custom Tasks": [
-    { name: "Consultation", price: "AED 20", time: "15 mins" },
-    { name: "Urgent Assistance", price: "AED 100", time: "On demand", popular: true },
-    { name: "Personal Shopper", price: "AED 80", time: "Flexible" }
-  ]
 };
 
 const testimonials = [
