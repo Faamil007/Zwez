@@ -310,6 +310,7 @@ button {
   margin: 0 auto;
 }
 
+
 .hero-content {
   flex: 1;
   padding-right: 40px;
@@ -346,6 +347,68 @@ button {
   box-shadow: var(--shadow-lg);
 }
 
+.hero {
+  background: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(10, 25, 47, 0.9),
+    rgba(10, 25, 47, 0.7)
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+:root {
+  /* Professional Dark Blue Theme */
+  --primary: #0a192f;       /* Navy blue */
+  --secondary: #8892b0;     /* Light slate */
+  --accent: #64ffda;        /* Teal accent */
+  --accent-hover: #52d1b2;  /* Darker teal */
+  --background: #f8f9fa;    /* Very light gray */
+  --card-bg: #ffffff;       /* Pure white */
+  --text: #0a192f;         /* Navy blue */
+  --text-light: #495057;    /* Dark gray */
+  --border: #dee2e6;       /* Light gray */
+  --success: #28a745;       /* Green */
+}
+
+.dark {
+  /* Dark Mode Professional Theme */
+  --primary: #e6f1ff;       /* Light blue */
+  --secondary: #8892b0;     /* Light slate */
+  --accent: #64ffda;        /* Teal accent */
+  --accent-hover: #52d1b2;  /* Darker teal */
+  --background: #0a192f;    /* Navy blue */
+  --card-bg: #112240;       /* Dark slate blue */
+  --text: #e6f1ff;         /* Light blue */
+  --text-light: #ccd6f6;    /* Lighter blue */
+  --border: #1e2a47;       /* Dark blue border */
+}
+
+
+
+.hero-title {
+  color: var(--primary);
+}
+
+.hero-subtitle {
+  color: var(--secondary);
+}
 .hero-image::before {
   content: '';
   position: absolute;
@@ -393,6 +456,17 @@ button {
   grid-column: 1 / 2;
 }
 
+.service-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.service-card:hover {
+  transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
 .service-card:nth-child(5) {
   grid-column: 3 / 4;
 }
@@ -978,5 +1052,105 @@ button {
   .form-title {
     font-size: 20px;
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 5px;
+}.service-book {
+  position: relative;
+  overflow: hidden;
+}
+.service-book:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+.service-book:focus:after {
+  animation: ripple 1s ease-out;
+}
+@keyframes ripple {
+  0% { transform: scale(0, 0); opacity: 1; }
+  100% { transform: scale(20, 20); opacity: 0; }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Manrope', sans-serif;
+}
+
+.hero-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.nav-link::after {
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, #f43f5e 100%);
+}
+
+.service-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+
+:root {
+  --accent: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.primary-button {
+  background: var(--accent);
+  background-size: 200% auto;
+  transition: background-position 0.5s;
+}
+
+.primary-button:hover {
+  background-position: right center;
+}
+
+.app {
+  view-transition-name: root;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: fade 0.5s ease-in-out;
+}
+
+body {
+  cursor: url('data:image/svg+xml;utf8,<svg...'), auto;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--accent);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
 }
 

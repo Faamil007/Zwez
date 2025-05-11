@@ -74,6 +74,15 @@ export default function ZwezServices() {
     document.body.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
+  useEffect(() => {
+  const favicon = document.querySelector("link[rel~='icon']");
+  if (darkMode) {
+    favicon.href = '/dark-favicon.ico';
+  } else {
+    favicon.href = '/light-favicon.ico';
+  }
+}, [darkMode]);
+
   const scrollToSection = (section) => {
     setActiveCategory(section);
     refs[section].current?.scrollIntoView({ behavior: "smooth" });
