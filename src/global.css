@@ -347,68 +347,6 @@ button {
   box-shadow: var(--shadow-lg);
 }
 
-.hero {
-  background: var(--background);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    to right,
-    rgba(10, 25, 47, 0.9),
-    rgba(10, 25, 47, 0.7)
-  );
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-:root {
-  /* Professional Dark Blue Theme */
-  --primary: #0a192f;       /* Navy blue */
-  --secondary: #8892b0;     /* Light slate */
-  --accent: #64ffda;        /* Teal accent */
-  --accent-hover: #52d1b2;  /* Darker teal */
-  --background: #f8f9fa;    /* Very light gray */
-  --card-bg: #ffffff;       /* Pure white */
-  --text: #0a192f;         /* Navy blue */
-  --text-light: #495057;    /* Dark gray */
-  --border: #dee2e6;       /* Light gray */
-  --success: #28a745;       /* Green */
-}
-
-.dark {
-  /* Dark Mode Professional Theme */
-  --primary: #e6f1ff;       /* Light blue */
-  --secondary: #8892b0;     /* Light slate */
-  --accent: #64ffda;        /* Teal accent */
-  --accent-hover: #52d1b2;  /* Darker teal */
-  --background: #0a192f;    /* Navy blue */
-  --card-bg: #112240;       /* Dark slate blue */
-  --text: #e6f1ff;         /* Light blue */
-  --text-light: #ccd6f6;    /* Lighter blue */
-  --border: #1e2a47;       /* Dark blue border */
-}
-
-
-
-.hero-title {
-  color: var(--primary);
-}
-
-.hero-subtitle {
-  color: var(--secondary);
-}
 .hero-image::before {
   content: '';
   position: absolute;
