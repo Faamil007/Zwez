@@ -5,8 +5,8 @@ export default function ContactForm({ formRef }) {
   const contactMethods = [
     {
       icon: <FiMail className="contact-icon" />,
-      link: "mailto:mohamedfaamil@gmail.com",
-      text: "mohamedfaamil@gmail.com",
+      link: "mailto:contactzwez@gmail.com",
+      text: "contactzwez@gmail.com",
       className: "contact-method"
     },
     {

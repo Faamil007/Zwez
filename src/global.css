@@ -321,9 +321,9 @@ button {
   margin-bottom: 24px;
   background: linear-gradient(90deg, var(--text) 0%, var(--accent) 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 
 .hero-subtitle {
   font-size: 20px;
@@ -1214,6 +1214,13 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   padding: 2rem;
+}
+
+/* Center the third child */
+.category-grid-wrapper :nth-child(3) {
+  grid-column: span 2; /* Make it take up two columns */
+  justify-self: center; /* Center horizontally */
+  align-self: center; /* Center vertically */
 }
 
 @media (max-width: 768px) {
