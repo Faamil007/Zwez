@@ -7,39 +7,40 @@ import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
 import { FiMessageSquare } from "react-icons/fi";
 import "./global.css";
+import Footer from "./components/Footer";
+
 
 export const services = {
   "Personal Assistance Service": [
-    { name: "Grocery/pharmacy purchases within Al Qusais", price: "AED 30", popular: true },
-    { name: "Courier or document pickup/drop (Al Qusais only)", price: "AED 35" },
-    { name: "Queue standing or appointment slot booking (local)", price: "AED 40" },
-    { name: "Reminder calls & schedule planning", price: "AED 25" },
-    { name: "Gift purchasing and hand delivery", price: "AED 50" },
-    { name: "Event/party help (setup/pickup within the area)", price: "AED 60" },
-    { name: "Water can or gas cylinder order coordination", price: "AED 20" },
-    { name: "Airport pickup coordination (scheduling, not driving)", price: "AED 35" },
-    { name: "Lost item recovery support", price: "AED 30" }
+    { name: "Grocery/pharmacy purchases within Al Qusais", price: "AED 5", popular: true },
+    { name: "Courier or document pickup/drop (Al Qusais only)", price: "AED 5" },
+    { name: "Reminder calls & schedule planning", price: "AED 5" },
+    { name: "Gift purchasing and hand delivery", price: "AED 10" },
+    { name: "Event/party help (setup/pickup within the area)", price: "AED 50" },
+    { name: "Water can or gas cylinder order coordination", price: "AED 3" },
+    { name: "Airport pickup coordination (scheduling, not driving)", price: "Variable" },
+    { name: "Lost item recovery support", price: "AED 20" }
   ],
   " Tech Savvy Service": [
-    { name: "Mobile/PC/laptop setup & troubleshooting", price: "AED 50", popular: true },
-    { name: "App and software installation", price: "AED 40" },
-    { name: "Connecting printers, Wi-Fi, smart devices", price: "AED 45" },
-    { name: "Data backup support", price: "AED 35" },
-    { name: "Email setup and cloud storage configuration", price: "AED 30" },
-    { name: "Online form filling, exam application help", price: "AED 25" },
-    { name: "Research assistance (e.g., finding services or products)", price: "AED 30" },
-    { name: "ATS-friendly resume formatting & LinkedIn optimization", price: "AED 50" },
-    { name: "International flight/train/bus booking", price: "AED 40" },
-    { name: "PayLater, Tamara, Tabby support", price: "AED 20" }
+    { name: "Mobile/PC/laptop setup & troubleshooting", price: "AED 20", popular: true },
+    { name: "App and software installation", price: "AED 10" },
+    { name: "Connecting printers, Wi-Fi, smart devices", price: "AED 5" },
+    { name: "Data backup support", price: "AED 10" },
+    { name: "Email setup and cloud storage configuration", price: "AED 5" },
+    { name: "Online form filling, exam application help", price: "AED 10" },
+    { name: "Research assistance (e.g., finding services or products)", price: "AED 5" },
+    { name: "ATS-friendly resume formatting & LinkedIn optimization", price: "AED 10" },
+    { name: "International flight/train/bus booking", price: "AED 10" },
+    { name: "PayLater, Tamara, Tabby support", price: "AED 10" }
   ],
   "Custom Service (Other)": [
-    { name: "Website domain booking and basic hosting support", price: "AED 60" },
-    { name: "Online shopping help and payment walkthrough", price: "AED 30" },
-    { name: "Small quantity house shifting or item organization", price: "AED 100", popular: true },
-    { name: "Social media profile cleanup (basic photo/video editing)", price: "AED 45" },
-    { name: "Document formatting, scanning & PDF conversion", price: "AED 35" },
-    { name: "Payment troubleshooting (PayPal, Wise, etc.)", price: "AED 30" },
-    { name: "Vendor coordination (plumber, AC repair, etc.)", price: "AED 25" }
+    { name: "Website domain booking and basic hosting support", price: "AED 20" },
+    { name: "Online shopping help and payment walkthrough", price: "AED 5" },
+    { name: "Small quantity house shifting or item organization", price: "Flexible", popular: true },
+    { name: "Social media profile cleanup (basic photo/video editing)", price: "AED 20" },
+    { name: "Document formatting, scanning & PDF conversion", price: "AED 5" },
+    { name: "Payment troubleshooting (PayPal, Wise, etc.)", price: "AED 10" },
+    { name: "Vendor coordination (plumber, AC repair, etc.)", price: "AED 3" }
   ],
 };
 
@@ -107,6 +108,9 @@ export default function ZwezServices() {
       <CategorySection {...{ services, scrollToForm, refs }} />
       <Testimonials testimonials={testimonials} />
       <ContactForm formRef={formRef} />
+      <Footer />
     </div>
   );
 }
+
+
