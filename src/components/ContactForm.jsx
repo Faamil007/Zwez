@@ -25,7 +25,7 @@ export default function ContactForm({ formRef }) {
   ];
 
   return (
-    <section className="contact-section" ref={formRef}>
+    <section className="contact-section" ref={formRef}id="contact">
       <div className="contact-container">
         <div className="contact-info">
           <h2 className="contact-title">Get in Touch</h2>

@@ -3,7 +3,7 @@ import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export default function ServicesGrid({ services, scrollToSection, refs }) {
   return (
-    <section className="services-section">
+    <section className="services-section" id="services">
       <div className="section-header">
         <h2 className="section-title">Our Services</h2>
         <p className="section-subtitle">Quick solutions for your everyday needs</p>

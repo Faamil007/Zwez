@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Testimonials({ testimonials }) {
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section" id="testimonials">
       <div className="section-header">
         <h2 className="section-title">Client Experiences</h2>
         <p className="section-subtitle">What our customers say about us</p>
