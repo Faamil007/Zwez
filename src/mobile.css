@@ -1,237 +1,288 @@
-/* Mobile-First Premium Styles */
+/* Mobile-First Premium Styles with Theme Support */
 @media (max-width: 767px) {
     :root {
-      --radius: 10px;
-      --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
+      /* Light Theme Defaults */
+      --primary: #111827;
+      --secondary: #6b7280;
+      --accent: #4f46e5;
+      --accent-hover: #4338ca;
+      --background: #f9fafb;
+      --card-bg: #ffffff;
+      --text: #111827;
+      --text-light: #6b7280;
+      --border: #e5e7eb;
+      --success: #10b981;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   
+    .dark {
+      /* Dark Theme */
+      --primary: #f9fafb;
+      --secondary: #9ca3af;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --background: #111827;
+      --card-bg: #1f2937;
+      --text: #f9fafb;
+      --text-light: #d1d5db;
+      --border: #374151;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.25);
+    }
+  
+    /* Base Styles */
     body {
-      font-size: 15px;
-      line-height: 1.5;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      transition: var(--transition);
+      line-height: 1.6;
     }
   
-    /* Navigation */
+    /* Premium Header - Fixed Layout */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      padding: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+  
     .nav-container {
-      padding: 12px 16px;
+      width: 100%;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
   
     .logo-text {
       font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
     }
   
-    .nav-links, .nav-actions {
-      display: none;
+    .logo-dot {
+      color: var(--accent);
+      font-weight: 700;
+    }
+  
+    /* Header Actions - Theme Toggle + Hamburger */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(79, 70, 229, 0.1);
+      color: var(--accent);
+      border: none;
     }
   
     .menu-toggle {
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin-left: auto; /* Pushes hamburger to right */
     }
   
+    .hamburger {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: var(--transition);
+      position: relative;
+    }
+  
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: var(--transition);
+    }
+  
+    .hamburger::before {
+      transform: translateY(-6px);
+    }
+  
+    .hamburger::after {
+      transform: translateY(6px);
+    }
+  
+    .hamburger.open {
+      background: transparent;
+    }
+  
+    .hamburger.open::before {
+      transform: rotate(45deg);
+    }
+  
+    .hamburger.open::after {
+      transform: rotate(-45deg);
+    }
+  
+    /* Mobile Menu - Only shows after clicking hamburger */
     .mobile-menu {
-      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
       padding: 20px;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+      border-top: 1px solid var(--border);
+      display: none; /* Hidden by default */
     }
   
     .mobile-menu.open {
+      transform: translateY(0);
+      display: block; /* Shows when hamburger clicked */
+    }
+  
+    .mobile-link {
+      display: block;
+      padding: 12px 0;
+      color: var(--secondary);
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+  
+    .mobile-link:hover, 
+    .mobile-link.active {
+      color: var(--accent);
+    }
+  
+    /* Services Section - Vertical Cards (visible by default) */
+    .services-section {
+      padding: 100px 20px 40px; /* Adjusted for fixed header */
+    }
+  
+    .services-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+  
+    .services-title {
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+  
+    .services-subtitle {
+      color: var(--secondary);
+      font-size: 16px;
+    }
+  
+    .services-grid {
       display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .service-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+  
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+  
+    /* Request Service Button - Now in main content */
+    .request-service-btn {
+      margin-top: 32px;
+      background: var(--accent);
+      color: white;
+      padding: 14px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-align: center;
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 32px auto 0;
+      transition: var(--transition);
+    }
+  
+    .request-service-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
     }
   
     /* Hero Section */
     .hero {
-      padding: 80px 20px 40px;
-      flex-direction: column;
+      padding: 100px 20px 60px;
       text-align: center;
-    }
-  
-    .hero-content {
-      padding-right: 0;
-      margin-bottom: 30px;
     }
   
     .hero-title {
       font-size: 32px;
       margin-bottom: 16px;
-      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, var(--text) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   
     .hero-subtitle {
       font-size: 16px;
-      margin-bottom: 30px;
+      color: var(--secondary);
+      margin-bottom: 24px;
     }
   
     .hero-actions {
+      display: flex;
       flex-direction: column;
       gap: 12px;
       align-items: center;
     }
   
-    .primary-button, .secondary-button {
-      width: 100%;
-      max-width: 280px;
-      padding: 12px;
+    /* Theme Switch Animation */
+    @keyframes themeSwitch {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
   
-    .hero-image {
-      height: 300px;
-      width: 100%;
-    }
-  
-    /* Services Grid */
-    .services-section {
-      padding: 60px 20px;
-    }
-  
-    .services-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-  
-    .service-card {
-      padding: 24px;
-    }
-  
-    .card-title {
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-  
-    /* Category Section */
-    .category-section {
-      padding: 40px 20px;
-      margin: 40px auto;
-    }
-  
-    .section-title {
-      font-size: 28px;
-    }
-  
-    .section-subtitle {
-      font-size: 15px;
-    }
-  
-    .service-row {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 16px;
-      gap: 12px;
-    }
-  
-    .service-info, .service-details {
-      width: 100%;
-    }
-  
-    .service-book {
-      width: 100%;
-      margin: 12px 0 0;
-      text-align: center;
-    }
-  
-    /* Testimonials */
-    .testimonials-section {
-      padding: 60px 20px;
-    }
-  
-    .testimonials-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    /* Contact Section */
-    .contact-section {
-      padding: 60px 20px;
-    }
-  
-    .contact-container {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-  
-    .contact-form {
-      padding: 24px;
-    }
-  
-    /* Footer */
-    .footer {
-      padding: 40px 20px 20px;
-    }
-  
-    .footer-container {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-  
-    .footer-brand {
-      max-width: 100%;
-    }
-  
-    .footer-bottom {
-      margin-top: 30px;
-      padding-top: 20px;
-    }
-  
-    /* WhatsApp Float */
-    .whatsapp-float {
-      bottom: 16px;
-      right: 16px;
-      padding: 10px 16px;
-      font-size: 14px;
-    }
-  
-    /* Animations */
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-  
-    .service-card {
-      animation-delay: 0s !important;
-    }
-  
-    /* Premium Footer Mobile */
-    .premium-footer {
-      padding: 30px 20px 15px;
-    }
-  
-    .footer-container {
-      flex-direction: column;
-      gap: 30px;
-    }
-  
-    .footer-left, 
-    .footer-middle, 
-    .footer-right {
-      flex: 1 1 100%;
-      padding-right: 0;
-      min-width: auto;
-    }
-  
-    .footer-left h3 {
-      font-size: 20px;
-    }
-  
-    .footer-middle h4,
-    .footer-right h4 {
-      font-size: 15px;
-      margin-top: 20px;
-    }
-  
-    .footer-bottom {
-      margin-top: 30px;
-      padding-top: 15px;
-      font-size: 12px;
-    }
-  }
-  
-  /* Tablet Styles */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .hero-title {
-      font-size: 42px;
-    }
-  
-    .services-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  
-    .service-card:nth-child(3) {
-      grid-column: span 2;
+    body.theme-changing {
+      animation: themeSwitch 0.3s ease;
     }
   }
