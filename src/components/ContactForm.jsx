@@ -5,8 +5,8 @@ export default function ContactForm({ formRef }) {
   const contactMethods = [
     {
       icon: <FiMail className="contact-icon" />,
-      link: "mailto:contactzwez@gmail.com",
-      text: "contactzwez@gmail.com",
+      link: "mailto:contact@zwez.online",
+      text: "contact@zwez.online",
       className: "contact-method"
     },
     {
@@ -51,7 +51,7 @@ export default function ContactForm({ formRef }) {
         <form
           className="contact-form"
           id="requestForm"
-          action="https://formsubmit.co/mohamedfaamil@gmail.com"
+          action="https://formsubmit.co/contact@zwez.online"
           method="POST"
         >
           <h2 className="form-title">Service Request Form</h2>

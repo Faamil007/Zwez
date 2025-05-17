@@ -34,7 +34,7 @@ export default function Footer() {
             <h4>Contact Us</h4>
             <ul>
               <li><FaPhoneAlt /> +971 50 388 1148</li>
-              <li><FaEnvelope /> support@zwez.ae</li>
+              <li><FaEnvelope /> contact@zwez.online</li>
               <li><FaWhatsapp /> <a href="https://wa.me/+971503881148" target="_blank" rel="noreferrer">Chat on WhatsApp</a></li>
             </ul>
           </div>
