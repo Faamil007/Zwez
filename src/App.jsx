@@ -7,6 +7,7 @@ import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
 import { FiMessageSquare } from "react-icons/fi";
 import "./global.css";
+import "./mobile.css"
 import Footer from "./components/Footer";
 
 
