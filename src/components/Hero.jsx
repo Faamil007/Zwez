@@ -7,8 +7,8 @@ export default function Hero({ scrollToForm, darkMode }) {
       <div className="hero-content">
         <h1 className={`hero-title ${darkMode ? 'hero-title-dark' : ''}`}>
           Premium On-Demand 
-          <span className="highlight"> Services</span> 
-          in Dubai
+          <span className="highlight"> Services </span> 
+        in Dubai
         </h1>
         <p className="hero-subtitle">
           "Your personal techie, assistant, and problem-solver – all in one call."

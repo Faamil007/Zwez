@@ -1,54 +1,84 @@
 import React from "react";
-import { FiSun, FiMoon, FiArrowRight } from "react-icons/fi";
+import { FiSun, FiMoon, FiArrowRight, FiMenu } from "react-icons/fi";
 
-export default function Navbar({ services, activeCategory, setActiveCategory, scrollToSection, scrollToForm, darkMode, setDarkMode, menuOpen, setMenuOpen }) {
+export default function Navbar({
+  services,
+  activeCategory,
+  setActiveCategory,
+  scrollToSection,
+  scrollToForm,
+  darkMode,
+  setDarkMode,
+  menuOpen,
+  setMenuOpen,
+}) {
   return (
     <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
       <div className="nav-container">
-        <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        {/* Logo */}
+        <div
+          className="logo"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
           <span className="logo-text">Zwez</span>
           <span className="logo-dot">.</span>
         </div>
 
+        {/* Desktop Links */}
         <div className="nav-links">
           {Object.keys(services).map((category) => (
             <button
               key={category}
               onClick={() => scrollToSection(category)}
-              className={`nav-link ${activeCategory === category ? 'active' : ''}`}
+              className={`nav-link ${
+                activeCategory === category ? 'active' : ''
+              }`}
             >
               {category}
             </button>
           ))}
         </div>
 
+        {/* Actions */}
         <div className="nav-actions">
-          <button 
+          {/* Theme Toggle */}
+          <button
             className="theme-toggle"
             onClick={() => setDarkMode(!darkMode)}
             aria-label="Toggle dark mode"
           >
             {darkMode ? <FiSun /> : <FiMoon />}
           </button>
+
+          {/* Request Service CTA */}
           <button className="cta-button" onClick={scrollToForm}>
             Request Service <FiArrowRight />
           </button>
-          <button 
-            className="menu-toggle" 
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="menu-toggle"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <div className={`hamburger ${menuOpen ? 'open' : ''}`}></div>
+            <FiMenu
+              className={`hamburger-icon ${menuOpen ? 'open' : ''}`}
+              size={24}
+              style={{ color: darkMode ? '#fff' : '#111827' }}
+            />
           </button>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         {Object.keys(services).map((category) => (
           <button
             key={category}
             onClick={() => scrollToSection(category)}
-            className={`mobile-link ${activeCategory === category ? 'active' : ''}`}
+            className={`mobile-link ${
+              activeCategory === category ? 'active' : ''
+            }`}
           >
             {category}
           </button>

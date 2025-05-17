@@ -82,7 +82,7 @@
       font-weight: 700;
     }
   
-    /* Header Actions - Theme Toggle + Hamburger */
+    /* Header Actions - Theme Toggle + CTA + Hamburger */
     .nav-actions {
       display: flex;
       align-items: center;
@@ -101,210 +101,103 @@
       border: none;
     }
   
-    .menu-toggle {
+    .cta-button {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 24px;
-      height: 20px;
-      background: transparent;
+      align-items: center;
+      gap: 4px;
+      background: var(--accent);
+      color: white;
       border: none;
-      padding: 0;
-      margin-left: auto; /* Pushes hamburger to right */
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: var(--transition);
     }
-
+  
+    .cta-button:hover {
+      background: var(--accent-hover);
+    }
+  
+    /* Updated Hamburger Transformations */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin-left: auto; /* Pushes hamburger to right */
+    }
+  
     .menu-toggle span {
         background-color: #f8fafc;
+        width: 100%; /* Ensure spans fill the container width */
         height: 2px;
         border-radius: 3px;
+        transition: var(--transition); /* Add theme-consistent transition */
+        transform-origin: center; /* Improve rotation alignment */
     }
-
+    
+    /* Keep existing active state transformations */
     .menu-toggle.active span:nth-child(1) {
         transform: rotate(45deg) translate(6px, 6px);
     }
-
+    
     .menu-toggle.active span:nth-child(2) {
         opacity: 0;
     }
-
+    
     .menu-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
     }
-
-    .mobile-menu {
-        top: 64px;
-        background: rgba(15, 23, 42, 0.95);
-        padding: 1.5rem 0;
-        border-bottom: 1px solid rgba(74, 222, 128, 0.2);
-    }
-
-    .mobile-menu a {
-        color: #f8fafc;
-        padding: 1.2rem 2rem;
-        font-size: 1.1rem;
-        display: block;
-        transition: all 0.3s ease;
-    }
-
-    .mobile-menu a:hover {
-        color: #4ade80;
-    }
-
-    .mobile-menu a::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        height: 1px;
-        background: #4ade80;
-        transition: width 0.3s ease;
-    }
-
-    .mobile-menu a:hover::before {
-        width: 100%;
-    }
-
-    .mobile-link {
-      display: block;
-      padding: 12px 0;
-      color: var(--secondary);
-      font-weight: 500;
-      border-bottom: 1px solid var(--border);
-      transition: var(--transition);
-    }
-  
-    .mobile-link:hover, 
-    .mobile-link.active {
-      color: var(--accent);
-    }
-  
-    /* Services Section - Vertical Cards (visible by default) */
-    .services-section {
-      padding: 100px 20px 40px; /* Adjusted for fixed header */
-    }
-  
-    .services-header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-  
-    .services-title {
-      font-size: 28px;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-  
-    .services-subtitle {
-      color: var(--secondary);
-      font-size: 16px;
-    }
-  
-    .services-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-  
-    .service-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      border: 1px solid var(--border);
-    }
-  
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-  
-    /* Request Service Button - Now in main content */
-    .request-service-btn {
-      margin-top: 32px;
-      background: var(--accent);
-      color: white;
-      padding: 14px;
-      border-radius: var(--radius);
-      font-weight: 600;
-      text-align: center;
-      display: block;
-      width: 100%;
-      max-width: 300px;
-      margin: 32px auto 0;
-      transition: var(--transition);
-    }
-  
-    .request-service-btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-  
-    /* Hero Section */
-    .hero {
-      padding: 100px 20px 60px;
-      text-align: center;
-    }
-  
-    .hero-title {
-      font-size: 32px;
-      margin-bottom: 16px;
-      background: linear-gradient(90deg, var(--text) 0%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  
-    .hero-subtitle {
-      font-size: 16px;
-      color: var(--secondary);
-      margin-bottom: 24px;
-    }
-  
-    .hero-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-    }
-  
-    /* Theme Switch Animation */
-    @keyframes themeSwitch {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-  
-    body.theme-changing {
-      animation: themeSwitch 0.3s ease;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .nav-links,
-    .cta-button {
-      display: none;
-    }
-  
-    .menu-toggle {
-      display: flex;
-      z-index: 1001;
-    }
-  
     .mobile-menu {
       position: fixed;
-      top: 72px;
+      top: 60px;
       left: 0;
       right: 0;
       background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
       backdrop-filter: blur(12px);
       transform: translateY(-100%);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
     }
   
     .mobile-menu.open {
       transform: translateY(0);
       box-shadow: var(--shadow-lg);
+    }
+  
+    .mobile-link,
+    .mobile-cta {
+      display: block;
+      padding: 12px 16px;
+      color: var(--secondary);
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      background: var(--card-bg);
+      text-align: left;
+      transition: var(--transition);
+    }
+  
+    .mobile-link:hover,
+    .mobile-link.active {
+      color: var(--accent);
+    }
+  
+    .mobile-cta {
+      background: var(--accent);
+      color: white;
+      border: none;
+      font-weight: 600;
+      text-align: center;
+    }
+  
+    /* Hide desktop nav-links on mobile */
+    .nav-links {
+      display: none;
     }
   }
   
