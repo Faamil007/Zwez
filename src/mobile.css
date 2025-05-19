@@ -200,4 +200,78 @@
       display: none;
     }
   }
+  /* Mobile Styles */
+@media (max-width: 768px) {
+  .student-story {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
   
+  .story-text h3 {
+    font-size: 1.5rem;
+  }
+  
+  .about-list li {
+    font-size: 0.95rem;
+  }
+  
+  .student-advantages {
+    grid-template-columns: 1fr;
+  }
+  
+  .advantage-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+  
+  .about-list li {
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .values-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .value-card {
+    padding: 2rem;
+    margin: 0 1rem;
+  }
+  
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .value-icon {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .core-values {
+    padding: 4rem 1rem;
+  }
+  
+  .value-card {
+    padding: 1.5rem;
+  }
+  
+  .value-card h3 {
+    font-size: 1.25rem;
+  }
+  
+  .value-card p {
+    font-size: 0.9rem;
+  }
+}
+

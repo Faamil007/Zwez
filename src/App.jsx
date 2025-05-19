@@ -9,6 +9,8 @@ import { FiMessageSquare } from "react-icons/fi";
 import "./global.css";
 import "./mobile.css"
 import Footer from "./components/Footer";
+import About from './components/About';
+import CoreValues from './components/CoreValues';
 
 
 export const services = {
@@ -105,6 +107,8 @@ export default function ZwezServices() {
 
       <Navbar {...{ services, activeCategory, setActiveCategory, scrollToSection, scrollToForm, darkMode, setDarkMode, menuOpen, setMenuOpen }} />
       <Hero scrollToForm={scrollToForm} />
+      <About />
+      <CoreValues />
       <ServicesGrid {...{ services, scrollToSection, refs }} />
       <CategorySection {...{ services, scrollToForm, refs }} />
       <Testimonials testimonials={testimonials} />
