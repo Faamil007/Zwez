@@ -235,43 +235,99 @@
   }
 }
 
-/* Mobile Styles */
+/* Core Values Section */
+.core-values {
+  padding: 4rem 2rem;
+  background: var(--card-bg);
+}
+
+.values-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.value-card {
+  padding: 2rem;
+  background: var(--background);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.icon-wrapper {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.value-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.value-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .values-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  
-  .value-card {
-    padding: 2rem;
-    margin: 0 1rem;
-  }
-  
-  .icon-wrapper {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .value-icon {
-    font-size: 1.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .core-values {
-    padding: 4rem 1rem;
+    gap: 1.5rem;
   }
   
   .value-card {
     padding: 1.5rem;
   }
   
+  .value-icon {
+    font-size: 2rem;
+  }
+  
   .value-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
+  }
+  
+  .value-card p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .core-values {
+    padding: 2rem 1rem;
+  }
+  
+  .value-card {
+    padding: 1rem;
+  }
+  
+  .icon-wrapper {
+    margin-bottom: 1rem;
+  }
+  
+  .value-icon {
+    font-size: 1.75rem;
+  }
+  
+  .value-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
   }
   
   .value-card p {
     font-size: 0.9rem;
+    line-height: 1.5;
   }
 }
-
