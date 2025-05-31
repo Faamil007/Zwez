@@ -338,6 +338,8 @@ button {
 }
 
 .hero-image {
+  background-color: white !important;
+  color: black !important;
   flex: 1;
   height: 500px;
   background: linear-gradient(135deg, rgba(79, 70, 229, 0.2) 0%, rgba(99, 102, 241, 0.1) 100%);
@@ -348,6 +350,8 @@ button {
 }
 
 .hero-image::before {
+  background-color: white !important;
+  color: black !important;
   content: '';
   position: absolute;
   inset: 0;
