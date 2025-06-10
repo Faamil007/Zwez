@@ -32,8 +32,20 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo_zwez.jpg" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <!-- Schema.org Structured Data -->
+    <!-- Usercentrics Consent -->
     <script id="usercentrics-cmp" src="https://app.usercentrics.eu/browser-ui/latest/loader.js" data-settings-id="kZc20K2VQzJhKG" async></script>
+
+    <!-- Google Analytics 4 Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX'); // 🔁 Replace this with your real GA4 ID
+    </script>
+
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -79,33 +91,33 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    
+
     <!-- Hidden SEO Content for Crawlers -->
     <div style="display:none;">
       <h1>Zwez Services - Premium On-Demand Assistance in Dubai</h1>
       <h2>Student-Run Tech Support & Personal Helpers</h2>
       <p>Services in Dubai: Tech Support Dubai, Personal Assistant Dubai, Errand Services Dubai, Student Helpers Dubai, Affordable Tech Help Dubai</p>
-    <!-- In your main content section -->
-<h1>Premium On-Demand Services in Dubai</h1>
-<p class="hero-subtitle">"Your personal techie, assistant, and problem-solver – all in one call."</p>
 
-<section aria-label="About Zwez">
-  <h2>Why Choose Zwez?</h2>
-  <p>At Zwez Services, we're revolutionizing daily assistance in Dubai through:</p>
-  <ul>
-    <li>Student-powered tech support & personal help</li>
-    <li>24/7 availability across Dubai</li>
-    <li>Affordable rates for students & residents</li>
-  </ul>
-  
-  <h3>Our Difference</h3>
-  <p>Founded by Dubai students, we combine:</p>
-  <ul>
-    <li>Tech-savvy Gen-Z problem solving</li>
-    <li>Personal understanding of student needs</li>
-    <li>Community-focused service ethic</li>
-  </ul>
-</section>
+      <h1>Premium On-Demand Services in Dubai</h1>
+      <p class="hero-subtitle">"Your personal techie, assistant, and problem-solver – all in one call."</p>
+
+      <section aria-label="About Zwez">
+        <h2>Why Choose Zwez?</h2>
+        <p>At Zwez Services, we're revolutionizing daily assistance in Dubai through:</p>
+        <ul>
+          <li>Student-powered tech support & personal help</li>
+          <li>24/7 availability across Dubai</li>
+          <li>Affordable rates for students & residents</li>
+        </ul>
+        
+        <h3>Our Difference</h3>
+        <p>Founded by Dubai students, we combine:</p>
+        <ul>
+          <li>Tech-savvy Gen-Z problem solving</li>
+          <li>Personal understanding of student needs</li>
+          <li>Community-focused service ethic</li>
+        </ul>
+      </section>
     </div>
   </body>
 </html>
