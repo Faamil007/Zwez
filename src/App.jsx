@@ -14,43 +14,28 @@ import CoreValues from './components/CoreValues';
 
 
 export const services = {
+
+  "Tech Savvy Service": [  
+    {name: "Website Development with SEO & Hosting"},
+    {name: "App development (Android/iOS) with ASO & Deploying" },
+    {name: "Social media management & marketing"},
+    {name: "ATS-friendly resume formatting & LinkedIn optimization"}
+    
+  ],
+
   "Personal Assistance Service": [
-    { name: "Grocery/pharmacy purchases within Al Qusais", price: "AED 5", popular: true },
-    { name: "Courier or document pickup/drop (Al Qusais only)", price: "AED 5" },
-    { name: "Reminder calls & schedule planning", price: "AED 5" },
-    { name: "Gift purchasing and hand delivery", price: "AED 10" },
-    { name: "Event/party help (setup/pickup within the area)", price: "AED 50" },
-    { name: "Water can or gas cylinder order coordination", price: "AED 3" },
-    { name: "Airport pickup coordination (scheduling, not driving)", price: "Variable" },
-    { name: "Lost item recovery support", price: "AED 20" }
+    { name: "Online form filling, exam application help" },
+    { name: "Research assistance (e.g., finding services or products)" },
+    { name: "International flight/train/bus booking" },
+    { name: "Small quantity house shifting or item organization" },
   ],
-  " Tech Savvy Service": [
-    { name: "Mobile/PC/laptop setup & troubleshooting", price: "AED 20", popular: true },
-    { name: "App and software installation", price: "AED 10" },
-    { name: "Connecting printers, Wi-Fi, smart devices", price: "AED 5" },
-    { name: "Data backup support", price: "AED 10" },
-    { name: "Email setup and cloud storage configuration", price: "AED 5" },
-    { name: "Online form filling, exam application help", price: "AED 10" },
-    { name: "Research assistance (e.g., finding services or products)", price: "AED 5" },
-    { name: "ATS-friendly resume formatting & LinkedIn optimization", price: "AED 10" },
-    { name: "International flight/train/bus booking", price: "AED 10" },
-    { name: "PayLater, Tamara, Tabby support", price: "AED 10" }
-  ],
-  "Custom Service (Other)": [
-    { name: "Website domain booking and basic hosting support", price: "AED 20" },
-    { name: "Online shopping help and payment walkthrough", price: "AED 5" },
-    { name: "Small quantity house shifting or item organization", price: "Flexible", popular: true },
-    { name: "Social media profile cleanup (basic photo/video editing)", price: "AED 20" },
-    { name: "Document formatting, scanning & PDF conversion", price: "AED 5" },
-    { name: "Payment troubleshooting (PayPal, Wise, etc.)", price: "AED 10" },
-    { name: "Vendor coordination (plumber, AC repair, etc.)", price: "AED 3" }
-  ],
+
 };
 
 export const testimonials = [
   {
-    quote: "Zwez saved me when my internet went down before an important meeting. Fast and professional!",
-    author: "Sarah K., Business Owner"
+    quote: "Zwez's team helped me set up a score board as per my requests, in record time. I was impressed with their attention to detail and professionalism.",
+    author: "Aba rach, Event Organizer at grace Family int. ministries"
   },
   {
     quote: "The furniture assembly was done perfectly in half the time it would have taken me.",
