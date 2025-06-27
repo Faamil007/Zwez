@@ -35,11 +35,11 @@ export const services = {
 export const testimonials = [
   {
     quote: "Zwez's team helped me set up a score board as per my requests, in record time. I was impressed with their attention to detail and professionalism.",
-    author: "Aba rach, Event Organizer at grace Family int. ministries"
+    author: "Aba Rich, Event Organizer at grace Family int. ministries"
   },
   {
-    quote: "The furniture assembly was done perfectly in half the time it would have taken me.",
-    author: "Ahmed R., Resident"
+    quote: "I got stuck in the middle of the road and contacted Zwez. Help arrived within minutes. Their quick response and efficiency made a stressful situation much easier.",
+    author: "Abdul Rahman, Owner of Aqua Pools Trading LLC."
   },
   {
     quote: "Reliable grocery delivery every time. I use their service weekly now.",
