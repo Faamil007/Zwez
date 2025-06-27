@@ -41,10 +41,6 @@ export const testimonials = [
     quote: "I got stuck in the middle of the road and contacted Zwez. Help arrived within minutes. Their quick response and efficiency made a stressful situation much easier.",
     author: "Abdul Rahman, Owner of Aqua Pools Trading LLC."
   },
-  {
-    quote: "Reliable grocery delivery every time. I use their service weekly now.",
-    author: "Mariam S., Busy Parent"
-  }
 ];
 
 export default function ZwezServices() {
