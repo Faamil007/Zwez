@@ -1,5 +1,6 @@
 import { FiArrowRight, FiMessageSquare, FiMail, FiPhone } from "react-icons/fi";
 import { services } from '../App.jsx';
+import '../css/ContactForm.css'; 
 
 export default function ContactForm({ formRef }) {
   const contactMethods = [
