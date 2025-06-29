@@ -17,7 +17,7 @@ export default function Footer() {
             What makes us different? Zwez is run by ambitious teens turning a small side hustle into something meaningful — built on connection, not just business.
           </p>
           <p>
-            Our goal? To be more than just a service — to be trusted friends who’ve earned your confidence, because trust is everything.
+            Our goal? To be more than just a service — to be trusted friends who’ve earned your confidence, because trust is everything in today’s world.
           </p>
         </div>
 
