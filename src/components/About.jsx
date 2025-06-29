@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiUsers, FiZap, FiDollarSign } from "react-icons/fi";
+import "../css/About.css"; 
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);

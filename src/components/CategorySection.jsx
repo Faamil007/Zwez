@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/CategorySection.css"; 
 
 export default function CategorySection({ services, scrollToForm, refs }) {
   return (
