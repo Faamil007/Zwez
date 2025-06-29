@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FiUsers, FiZap, FiDollarSign } from "react-icons/fi";
 
 export default function About() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(node);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(node);
+
+    return () => {
+      if (node) {
+        observer.unobserve(node);
+      }
+    };
+  }, []);
+
   return (
-    <section className="about-section" id="about">
+    <section 
+      className={`about-section ${isVisible ? 'visible' : ''}`}
+      ref={sectionRef}
+      id="about"
+    >
       <div className="content">
         <h2 className="section-title">Our Story</h2>
 
@@ -16,11 +46,11 @@ export default function About() {
           <div className="story-text">
             <h3>Why We Created ZWEZ</h3>
             <p>
-            In today's fast-paced, tech-heavy world, even everyday tasks can become overwhelming — especially for those who aren’t familiar with rapidly evolving technology. That’s where we come in.
+              In today's fast-paced, tech-heavy world, even everyday tasks can become overwhelming — especially for those who aren't familiar with rapidly evolving technology. That's where we come in.
             </p>
             <p>
-            That’s why we started ZWEZ — a group of college students in Dubai using our knowledge to make life easier for you. While helping others with tech, we gain experience and earn a little side income to manage our student life. It’s practical, helpful, and driven by purpose.
-              </p>
+              That's why we started ZWEZ — a group of college students in Dubai using our knowledge to make life easier for you. While helping others with tech, we gain experience and earn a little side income to manage our student life. It's practical, helpful, and driven by purpose.
+            </p>
             <ul className="about-list">
               <li>🧠 Simplify technology for everyday people</li>
               <li>🤝 Offer trusted, friendly, and affordable support</li>
@@ -28,7 +58,7 @@ export default function About() {
               <li>💸 Make a small income to support our student life</li>
             </ul>
             <p>
-            We grow through your support — a community-based exchange of help and trust.            
+              We grow through your support — a community-based exchange of help and trust.            
             </p>
           </div>
         </div>

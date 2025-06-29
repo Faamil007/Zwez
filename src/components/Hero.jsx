@@ -22,7 +22,12 @@ export default function Hero({ scrollToForm, darkMode }) {
           </a>
         </div>
       </div>
-      <div className="hero-image"></div>
+      <img 
+        src="/hero-image.jpg" 
+        alt="Zwez Services Team in Dubai" 
+        className="hero-image"
+        loading="eager"  // Important for hero images
+      />
     </header>
   );
 }

@@ -46,7 +46,7 @@ export const testimonials = [
 export default function ZwezServices() {
   const refs = {
     "Personal Assistance Service": useRef(null),
-    " Tech Savvy Service": useRef(null),
+    "Tech Savvy Service": useRef(null),
     "Custom Service (Other)": useRef(null),
     "Custom Tasks": useRef(null),
   };
@@ -98,5 +98,4 @@ export default function ZwezServices() {
     </div>
   );
 }
-
 
