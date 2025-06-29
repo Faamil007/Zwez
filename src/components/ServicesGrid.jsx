@@ -1,5 +1,6 @@
 import React from "react";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
+import "../css/ServicesGrid.css"; 
 
 export default function ServicesGrid({ services, scrollToSection, refs }) {
   return (

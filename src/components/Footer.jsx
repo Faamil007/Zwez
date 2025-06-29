@@ -1,6 +1,7 @@
 // src/components/Footer.js
 import React from "react";
 import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import "../css/Footer.css"; 
 
 export default function Footer() {
   return (

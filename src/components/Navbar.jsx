@@ -1,5 +1,6 @@
 import React from "react";
 import { FiSun, FiMoon, FiArrowRight, FiMenu } from "react-icons/fi";
+import '../css/Navbar.css'; 
 
 export default function Navbar({
   services,
