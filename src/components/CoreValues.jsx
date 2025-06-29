@@ -1,5 +1,6 @@
 import React from "react";
 import { FiEye, FiTarget, FiUsers } from "react-icons/fi";
+import "../css/CoreValues.css"; 
 
 export default function CoreValues() {
   return (

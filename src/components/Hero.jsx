@@ -1,5 +1,6 @@
 import React from "react";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
+import "../css/Hero.css"; 
 
 export default function Hero({ scrollToForm, darkMode }) {
   return (

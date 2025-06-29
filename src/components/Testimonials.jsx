@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/Testimonials.css";
 
 export default function Testimonials({ testimonials }) {
   return (
