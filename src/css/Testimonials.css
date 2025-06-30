@@ -1,4 +1,3 @@
-/* ====== Testimonials Section ====== */
 .testimonials-section {
   --glass-blur: 16px;
   --parallax-depth: 40px;
@@ -15,6 +14,7 @@
   view-timeline-name: --testimonials-section;
 }
 
+/* Dynamic gradient background with animation */
 .testimonials-section::before {
   content: '';
   position: absolute;
@@ -40,6 +40,7 @@
   opacity: 0.2;
 }
 
+/* Floating quote marks pattern */
 .testimonials-section::after {
   content: '';
   position: absolute;
@@ -55,37 +56,9 @@
   animation: floatQuotes 30s linear infinite;
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: var(--space-xl);
-  position: relative;
-}
-
-.section-title {
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-sm);
-  position: relative;
-  display: inline-block;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: var(--gradient);
-  border-radius: 2px;
-}
-
-.section-subtitle {
-  color: var(--text-color);
-  opacity: 0.8;
-  font-size: var(--text-md);
-  max-width: 700px;
-  margin: 0 auto;
+@keyframes floatQuotes {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
 }
 
 .testimonials-grid {
@@ -130,10 +103,12 @@
   animation-range: entry 20% cover 30%;
 }
 
+/* Staggered animation delays */
 .testimonial-card:nth-child(1) { --stagger-delay: 0.1s; }
 .testimonial-card:nth-child(2) { --stagger-delay: 0.3s; }
 .testimonial-card:nth-child(3) { --stagger-delay: 0.5s; }
 
+/* Hover effects */
 .testimonial-card:hover {
   --card-scale: 1.03;
   --card-rotate: -1deg;
@@ -146,6 +121,7 @@
   z-index: 2;
 }
 
+/* Ripple click effect */
 .testimonial-card:active::after {
   content: '';
   position: absolute;
@@ -162,6 +138,15 @@
   animation: ripple var(--ripple-duration) ease-out;
 }
 
+@keyframes ripple {
+  to {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
+}
+
+/* Giant quote mark background */
 .testimonial-card::before {
   content: '"';
   position: absolute;
@@ -212,6 +197,7 @@
   background-clip: text;
 }
 
+/* Animated gradient border */
 .testimonial-quote::before {
   content: '';
   position: absolute;
@@ -261,41 +247,7 @@
   left: -5px;
 }
 
-/* Animations */
-@keyframes gradientRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes subtlePulse {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.4; }
-}
-
-@keyframes floatQuotes {
-  0% { background-position: 0 0; }
-  100% { background-position: 100px 100px; }
-}
-
-@keyframes ripple {
-  to {
-    width: 200%;
-    height: 200%;
-    opacity: 0;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Floating 3D effect */
 @keyframes float {
   0%, 100% { transform: translateY(0) translateZ(0); }
   50% { transform: translateY(-15px) translateZ(10px); }
@@ -349,8 +301,8 @@
   }
 }
 
-/* Responsive adjustments */
-@media (max-width: 800px) {
+/* Container queries */
+@container (max-width: 800px) {
   .testimonials-grid {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
@@ -365,6 +317,30 @@
 @media (pointer: fine) {
   .testimonial-card {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="none" stroke="%234361ee" stroke-width="2"/></svg>') 16 16, pointer;
+  }
+}
+
+/* Houdini paint worklet fallback */
+@supports (background: paint(something)) {
+  .testimonial-card {
+    --pattern-seed: 1234;
+    --pattern-colors: %234361ee, %233f37c9;
+    background-image: paint(confetti);
+    background-blend-mode: overlay;
+  }
+}
+
+/* Scroll-triggered animations */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -386,25 +362,4 @@
 
 .testimonial-card:hover::after {
   opacity: 0.3;
-}
-
-/* RTL support */
-[dir="rtl"] .testimonial-quote {
-  padding-left: 0;
-  padding-right: var(--space-xl);
-}
-
-[dir="rtl"] .testimonial-quote::before {
-  left: auto;
-  right: 0;
-}
-
-[dir="rtl"] .testimonial-author {
-  padding-left: 0;
-  padding-right: var(--space-lg);
-}
-
-[dir="rtl"] .testimonial-author::before {
-  left: auto;
-  right: 0;
 }

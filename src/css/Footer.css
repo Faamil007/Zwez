@@ -1,4 +1,3 @@
-/* ====== Footer ====== */
 .premium-footer {
   --glass-blur: 16px;
   --parallax-depth: 40px;
@@ -26,6 +25,7 @@
   );
 }
 
+/* Animated gradient background */
 .premium-footer::before {
   content: '';
   position: absolute;
@@ -51,6 +51,7 @@
   opacity: 0.2;
 }
 
+/* Floating grid pattern */
 .premium-footer::after {
   content: '';
   position: absolute;
@@ -67,6 +68,10 @@
   animation: gridMove 30s linear infinite;
 }
 
+@keyframes gridMove {
+  100% { background-position: 40px 40px; }
+}
+
 .footer-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
@@ -78,6 +83,7 @@
   transform-style: preserve-3d;
 }
 
+/* Footer Left Section - Glass Panel */
 .footer-left {
   --panel-translate-z: 0px;
   --panel-rotate-y: 0deg;
@@ -154,6 +160,7 @@
   transform: translateZ(30px);
 }
 
+/* Footer Right Section - Grid Layout */
 .footer-right {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
@@ -161,6 +168,7 @@
   transform-style: preserve-3d;
 }
 
+/* Footer Column - Glass Panel */
 .footer-quick-links,
 .footer-contact {
   --panel-translate-z: 0px;
@@ -224,6 +232,7 @@
   width: 100%;
 }
 
+/* Footer Links - Interactive Elements */
 .footer-quick-links ul,
 .footer-contact ul {
   list-style: none;
@@ -240,6 +249,7 @@
   animation: fadeInUp 0.6s ease forwards;
 }
 
+/* Staggered animations */
 .footer-quick-links li:nth-child(1) { animation-delay: 0.5s; }
 .footer-quick-links li:nth-child(2) { animation-delay: 0.7s; }
 .footer-quick-links li:nth-child(3) { animation-delay: 0.9s; }
@@ -294,6 +304,7 @@
   transform: scale(1.2) rotate(10deg);
 }
 
+/* Footer Bottom - Copyright Section */
 .footer-bottom {
   text-align: center;
   padding: var(--space-xl) 0;
@@ -322,44 +333,27 @@
   );
 }
 
-@keyframes gradientRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes subtlePulse {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.4; }
-}
-
-@keyframes gridMove {
-  100% { background-position: 40px 40px; }
-}
-
+/* Floating 3D effect */
 @keyframes float {
-  0%, 100% { 
-    transform: 
-      translateY(0)
-      translateZ(0);
-  }
-  50% { 
-    transform: 
-      translateY(-10px)
-      translateZ(10px);
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-10px) translateZ(10px); }
+}
+
+/* Scroll-triggered animations */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .premium-footer::before,
   .premium-footer::after,
@@ -380,7 +374,8 @@
   }
 }
 
-@media (max-width: 800px) {
+/* Container queries */
+@container (max-width: 800px) {
   .footer-container {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
@@ -402,21 +397,42 @@
   }
 }
 
-[dir="rtl"] .footer-quick-links a,
-[dir="rtl"] .footer-contact a {
-  padding-left: 0;
-  padding-right: var(--space-md);
+/* Custom cursor for interactive elements */
+@media (pointer: fine) {
+  .footer-quick-links a,
+  .footer-contact a {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="none" stroke="white" stroke-width="2"/></svg>') 16 16, pointer;
+  }
 }
 
-[dir="rtl"] .footer-quick-links a::before,
-[dir="rtl"] .footer-contact a::before {
-  left: auto;
-  right: 0;
-  content: '←';
-  transform: translateX(5px);
+/* Houdini paint worklet fallback */
+@supports (background: paint(something)) {
+  .footer-left,
+  .footer-quick-links,
+  .footer-contact {
+    --pattern-seed: 1234;
+    --pattern-colors: %23ffffff, %23aaaaaa;
+    background-image: paint(dots);
+    background-blend-mode: overlay;
+  }
 }
 
-[dir="rtl"] .footer-quick-links a:hover::before,
-[dir="rtl"] .footer-contact a:hover::before {
-  transform: translateX(0);
+/* Shape-based decorative elements */
+.footer-left::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 80px 80px;
+  border-color: transparent transparent var(--primary-color) transparent;
+  opacity: 0.1;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+}
+
+.footer-left:hover::after {
+  opacity: 0.3;
 }

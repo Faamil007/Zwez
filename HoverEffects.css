@@ -1,0 +1,37 @@
+.hover-3d {
+    --hover-rotate-y: 0;
+    --hover-rotate-x: 0;
+    --hover-translate-z: 0;
+    
+    transform: 
+      rotateY(var(--hover-rotate-y))
+      rotateX(var(--hover-rotate-x))
+      translateZ(var(--hover-translate-z));
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hover-3d:hover {
+    --hover-rotate-y: 5deg;
+    --hover-rotate-x: 3deg;
+    --hover-translate-z: 15px;
+  }
+
+  /* Hover glow effect */
+  .hover-glow {
+    --glow-color: var(--primary-color);
+    --glow-size: 0px;
+    --glow-opacity: 0;
+    
+    box-shadow: 
+      0 0 var(--glow-size) var(--glow-opacity) var(--glow-color),
+      inset 0 0 10px var(--glow-opacity) var(--glow-color);
+    transition: 
+      box-shadow 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  .hover-glow:hover {
+    --glow-size: 20px;
+    --glow-opacity: 0.4;
+    transform: scale(1.02);
+  }

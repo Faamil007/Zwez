@@ -1,3 +1,260 @@
+.contact-section {
+  --glass-blur: 20px;
+  --parallax-depth: 60px;
+  --hover-elevation: 15px;
+  --ripple-duration: 0.8s;
+  --stagger-delay: 0.1s;
+  --gradient-angle: 135deg;
+  --form-glow: 0 0 30px rgba(67, 97, 238, 0.2);
+  
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-xxl) 0;
+  background: 
+    linear-gradient(
+      var(--gradient-angle),
+      var(--bg-color) 0%,
+      var(--bg-color-secondary) 100%
+    );
+  view-timeline-name: --contact-section;
+  clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+}
+
+/* Dynamic particle background */
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(
+      circle at 30% 60%, 
+      rgba(67, 97, 238, 0.15) 0%, 
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 70% 30%, 
+      rgba(236, 72, 153, 0.1) 0%, 
+      transparent 60%
+    );
+  z-index: -2;
+  animation: 
+    gradientRotate 30s linear infinite,
+    subtlePulse 12s ease infinite alternate;
+  opacity: 0.15;
+}
+
+/* Floating dots pattern */
+.contact-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, var(--primary-color) 2px, transparent 0),
+    radial-gradient(2px 2px at 80% 70%, var(--accent-color) 2px, transparent 0),
+    radial-gradient(2px 2px at 40% 20%, var(--highlight-color) 2px, transparent 0);
+  background-size: 150px 150px;
+  animation: particleMove 25s linear infinite;
+  opacity: 0.05;
+  z-index: -1;
+  mix-blend-mode: overlay;
+}
+
+@keyframes particleMove {
+  100% { background-position: 150px 150px; }
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+  gap: var(--space-xxl);
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* Contact Info Section - Glass Panel */
+.contact-info {
+  --panel-translate-z: 0px;
+  --panel-rotate-y: 0deg;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-xl);
+  background: rgba(var(--card-bg-rgb), 0.7);
+  border-radius: var(--border-radius-xl);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 10px 30px var(--shadow-color),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: 
+    translateZ(var(--panel-translate-z))
+    rotateY(var(--panel-rotate-y));
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  animation: 
+    fadeInLeft 0.8s var(--stagger-delay) forwards,
+    float 6s ease-in-out infinite;
+}
+
+.contact-info:hover {
+  --panel-translate-z: 20px;
+  --panel-rotate-y: -3deg;
+  
+  box-shadow: 
+    0 15px 40px var(--shadow-color),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.contact-title {
+  font-size: var(--text-xxl);
+  margin-bottom: var(--space-md);
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.contact-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--gradient);
+  transition: width 0.6s ease;
+}
+
+.contact-info:hover .contact-title::after {
+  width: 100%;
+}
+
+.contact-subtitle {
+  margin-bottom: var(--space-xl);
+  font-size: var(--text-md);
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeIn 0.6s ease 0.4s forwards;
+}
+
+/* Contact Methods - Interactive Elements */
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.contact-method {
+  --method-bg: rgba(67, 97, 238, 0.05);
+  --method-scale: 1;
+  
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--text-color);
+  text-decoration: none;
+  padding: var(--space-md);
+  border-radius: var(--border-radius-lg);
+  background: var(--method-bg);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(var(--method-scale));
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Staggered animations */
+.contact-method:nth-child(1) { animation-delay: 0.6s; }
+.contact-method:nth-child(2) { animation-delay: 0.8s; }
+.contact-method:nth-child(3) { animation-delay: 1.0s; }
+
+.contact-method::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.contact-method:hover {
+  --method-bg: rgba(67, 97, 238, 0.15);
+  --method-scale: 1.03;
+  
+  transform: translateX(10px) scale(var(--method-scale));
+  box-shadow: 
+    0 5px 15px var(--shadow-color),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.contact-method:hover::before {
+  transform: translateX(100%);
+}
+
+.contact-icon {
+  font-size: var(--text-xl);
+  color: var(--primary-color);
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(67, 97, 238, 0.1);
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+
+.contact-method:hover .contact-icon {
+  transform: rotate(15deg) scale(1.1);
+  background: rgba(67, 97, 238, 0.2);
+  box-shadow: 0 0 15px rgba(67, 97, 238, 0.2);
+}
+
+/* WhatsApp specific styles */
+.whatsapp {
+  --method-bg: rgba(37, 211, 102, 0.05);
+}
+
+.whatsapp .contact-icon {
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.1);
+}
+
+.whatsapp:hover {
+  --method-bg: rgba(37, 211, 102, 0.15);
+}
+
+.whatsapp:hover .contact-icon {
+  background: rgba(37, 211, 102, 0.2);
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.2);
+}
+
+/* Contact Form - 3D Glass Panel */
 .contact-form {
   --form-translate-z: 0px;
   --form-rotate-y: 0deg;
@@ -296,91 +553,4 @@
 
 .contact-info:hover::after {
   opacity: 0.3;
-}
-
-/* ====== Footer ====== */
-/* ====== Ultra-Enhanced Premium Footer ====== */
-.premium-footer {
-  --glass-blur: 16px;
-  --parallax-depth: 40px;
-  --hover-elevation: 10px;
-  --ripple-duration: 0.6s;
-  --gradient-angle: 135deg;
-  --footer-wave-height: 50px;
-  
-  background: var(--footer-bg-dynamic);
-  color: var(--footer-text);
-  padding: var(--space-xxl) var(--space-lg) 0;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  view-timeline-name: --footer-section;
-  clip-path: polygon(
-    0 0, 
-    100% 0, 
-    100% calc(100% - var(--footer-wave-height)), 
-    80% calc(100% - var(--footer-wave-height) + 10px),
-    60% calc(100% - var(--footer-wave-height)),
-    40% calc(100% - var(--footer-wave-height) + 15px),
-    20% calc(100% - var(--footer-wave-height) - 5px),
-    0 calc(100% - var(--footer-wave-height))
-  );
-}
-
-/* Animated gradient background */
-.premium-footer::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: 
-    radial-gradient(
-      circle at 30% 70%, 
-      rgba(67, 97, 238, 0.15) 0%, 
-      transparent 60%
-    ),
-    linear-gradient(
-      var(--gradient-angle),
-      rgba(67, 97, 238, 0.05) 0%,
-      transparent 100%
-    );
-  z-index: -2;
-  animation: 
-    gradientRotate 30s linear infinite,
-    subtlePulse 15s ease infinite alternate;
-  opacity: 0.2;
-}
-
-/* Floating grid pattern */
-.premium-footer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  z-index: -1;
-  opacity: 0.1;
-  animation: gridMove 30s linear infinite;
-}
-
-@keyframes gridMove {
-  100% { background-position: 40px 40px; }
-}
-
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-  gap: var(--space-xxl);
-  max-width: 1400px;
-  margin: 0 auto;
-  position: relative;
-  perspective: 1000px;
-  transform-style: preserve-3d;
 }
