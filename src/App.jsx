@@ -5,52 +5,51 @@ import ServicesGrid from "./components/ServicesGrid";
 import CategorySection from "./components/CategorySection";
 import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
-import { FiMessageSquare } from "react-icons/fi";
-import "./global.css";
-import "./mobile.css"
 import Footer from "./components/Footer";
-import About from './components/About';
-import CoreValues from './components/CoreValues';
-import "./css/3DEffects.css"; 
+import About from "./components/About";
+import CoreValues from "./components/CoreValues";
+import { FiMessageSquare } from "react-icons/fi";
+
+import "./global.css";
+import "./mobile.css";
+import "./css/3DEffects.css";
 import "./css/Footer.css";
 import "./css/GlassCard.css";
 import "./css/HoverEffects.css";
 import "./css/ScrollAnime.css";
 import "./css/WhatsApp.css";
 
-
-
-
+// =================== Service Data ===================
 export const services = {
-
-  "Tech Savvy Service": [  
-    {name: "Website Development with SEO & Hosting"},
-    {name: "App development (Android/iOS) with ASO & Deploying" },
-    {name: "Social media management & marketing"},
-    {name: "ATS-friendly resume formatting & LinkedIn optimization"}
-    
+  "Tech Savvy Service": [
+    { name: "Website Development with SEO & Hosting" },
+    { name: "App development (Android/iOS) with ASO & Deploying" },
+    { name: "Social media management & marketing" },
+    { name: "ATS-friendly resume formatting & LinkedIn optimization" },
   ],
-
   "Personal Assistance Service": [
     { name: "Online form filling, exam application help" },
     { name: "Research assistance (e.g., finding services or products)" },
     { name: "International flight/train/bus booking" },
     { name: "Small quantity house shifting or item organization" },
   ],
-
 };
 
+// =================== Testimonial Data ===================
 export const testimonials = [
   {
-    quote: "Zwez's team helped me set up a score board as per my requests, in record time. I was impressed with their attention to detail and professionalism.",
-    author: "Aba Rich, Event Organizer at grace Family int. ministries"
+    quote:
+      "Zwez's team helped me set up a score board as per my requests, in record time. I was impressed with their attention to detail and professionalism.",
+    author: "Aba Rich, Event Organizer at Grace Family Int. Ministries",
   },
   {
-    quote: "I got stuck in the middle of the road and contacted Zwez. Help arrived within minutes. Their quick response and efficiency made a stressful situation much easier.",
-    author: "Abdul Rahman, Owner of Aqua Pools Trading LLC."
+    quote:
+      "I got stuck in the middle of the road and contacted Zwez. Help arrived within minutes. Their quick response and efficiency made a stressful situation much easier.",
+    author: "Abdul Rahman, Owner of Aqua Pools Trading LLC.",
   },
 ];
 
+// =================== Main Component ===================
 export default function ZwezServices() {
   const refs = {
     "Personal Assistance Service": useRef(null),
@@ -58,23 +57,18 @@ export default function ZwezServices() {
     "Custom Service (Other)": useRef(null),
     "Custom Tasks": useRef(null),
   };
+
   const formRef = useRef(null);
-  const [darkMode, setDarkMode] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Force dark mode on first render
   useEffect(() => {
-    document.body.classList.toggle("dark", darkMode);
-  }, [darkMode]);
+    document.body.classList.add("dark");
 
-  useEffect(() => {
-  const favicon = document.querySelector("link[rel~='icon']");
-  if (darkMode) {
-    favicon.href = '/dark-favicon.ico';
-  } else {
-    favicon.href = '/light-favicon.ico';
-  }
-}, [darkMode]);
+    const favicon = document.querySelector("link[rel~='icon']");
+    if (favicon) favicon.href = "/dark-favicon.ico";
+  }, []);
 
   const scrollToSection = (section) => {
     setActiveCategory(section);
@@ -89,12 +83,29 @@ export default function ZwezServices() {
 
   return (
     <div className="app">
-      <a href="https://wa.me/+971503881148" className="whatsapp-float" target="_blank" rel="noopener noreferrer">
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/+971503881148"
+        className="whatsapp-float"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <FiMessageSquare className="whatsapp-icon" />
         <span>Chat Now</span>
       </a>
 
-      <Navbar {...{ services, activeCategory, setActiveCategory, scrollToSection, scrollToForm, darkMode, setDarkMode, menuOpen, setMenuOpen }} />
+      {/* Website Sections */}
+      <Navbar
+        {...{
+          services,
+          activeCategory,
+          setActiveCategory,
+          scrollToSection,
+          scrollToForm,
+          menuOpen,
+          setMenuOpen,
+        }}
+      />
       <Hero scrollToForm={scrollToForm} />
       <About />
       <CoreValues />
@@ -106,4 +117,3 @@ export default function ZwezServices() {
     </div>
   );
 }
-

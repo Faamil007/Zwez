@@ -1,5 +1,5 @@
 import React from "react";
-import { FiSun, FiMoon, FiArrowRight, FiMenu } from "react-icons/fi";
+import { FiArrowRight, FiMenu } from "react-icons/fi";
 import '../css/Navbar.css'; 
 
 export default function Navbar({
@@ -8,8 +8,6 @@ export default function Navbar({
   setActiveCategory,
   scrollToSection,
   scrollToForm,
-  darkMode,
-  setDarkMode,
   menuOpen,
   setMenuOpen,
 }) {
@@ -42,14 +40,7 @@ export default function Navbar({
 
         {/* Actions */}
         <div className="nav-actions">
-          {/* Theme Toggle */}
-          <button
-            className="theme-toggle"
-            onClick={() => setDarkMode(!darkMode)}
-            aria-label="Toggle dark mode"
-          >
-            {darkMode ? <FiSun /> : <FiMoon />}
-          </button>
+
 
           {/* Request Service CTA */}
           <button className="cta-button" onClick={scrollToForm}>
@@ -65,7 +56,6 @@ export default function Navbar({
             <FiMenu
               className={`hamburger-icon ${menuOpen ? 'open' : ''}`}
               size={24}
-              style={{ color: darkMode ? '#fff' : '#111827' }}
             />
           </button>
         </div>

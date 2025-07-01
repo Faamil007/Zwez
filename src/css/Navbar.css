@@ -236,38 +236,16 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark mode styles */
-body.dark .navbar {
-  --nav-bg: var(--dark-nav-bg);
-  --shadow-color: var(--dark-shadow-color);
-}
-
-body.dark .logo-text {
-  color: var(--dark-text);
-}
-
-body.dark .nav-link {
-  color: var(--dark-text);
-}
-
-body.dark .theme-toggle {
-  color: var(--dark-text);
-}
-
-body.dark .mobile-menu {
-  background-color: var(--dark-card-bg);
-}
-
 /* Responsive styles */
 @media (max-width: 1024px) {
   .nav-links {
     display: none;
   }
-  
+
   .menu-toggle {
     display: block;
   }
-  
+
   .mobile-menu {
     display: flex;
   }
@@ -277,7 +255,7 @@ body.dark .mobile-menu {
   .cta-button span {
     display: none;
   }
-  
+
   .cta-button::after {
     content: 'Request';
   }
