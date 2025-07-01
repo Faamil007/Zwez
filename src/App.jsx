@@ -11,6 +11,14 @@ import "./mobile.css"
 import Footer from "./components/Footer";
 import About from './components/About';
 import CoreValues from './components/CoreValues';
+import "./css/3DEffects.css"; 
+import "./css/Footer.css";
+import "./css/GlassCard.css";
+import "./css/HoverEffects.css";
+import "./css/ScrollAnime.css";
+import "./css/WhatsApp.css";
+
+
 
 
 export const services = {

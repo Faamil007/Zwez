@@ -1,0 +1,600 @@
+/*=============About.css=========================*/
+import React, { useEffect, useRef, useState } from "react";
+import { FiUsers, FiZap, FiDollarSign } from "react-icons/fi";
+import "../css/About.css"; 
+
+export default function About() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(node);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(node);
+
+    return () => {
+      if (node) {
+        observer.unobserve(node);
+      }
+    };
+  }, []);
+
+  return (
+    <section 
+      className={`about-section ${isVisible ? 'visible' : ''}`}
+      ref={sectionRef}
+      id="about"
+    >
+      <div className="content">
+        <h2 className="section-title">Our Story</h2>
+
+        <div className="student-story">
+          <img 
+            src="/team-photo.jpg" 
+            alt="Our student team" 
+            className="team-photo" 
+          />
+          <div className="story-text">
+            <h3>Why We Created ZWEZ</h3>
+            <p>
+              In today's fast-paced, tech-heavy world, even everyday tasks can become overwhelming — especially for those who aren't familiar with rapidly evolving technology. That's where we come in.
+            </p>
+            <p>
+              That's why we started ZWEZ — a group of college students in Dubai using our knowledge to make life easier for you. While helping others with tech, we gain experience and earn a little side income to manage our student life. It's practical, helpful, and driven by purpose.
+            </p>
+            <ul className="about-list">
+              <li>🧠 Simplify technology for everyday people</li>
+              <li>🤝 Offer trusted, friendly, and affordable support</li>
+              <li>🎓 Gain real-world experience while managing our education</li>
+              <li>💸 Make a small income to support our student life</li>
+            </ul>
+            <p>
+              We grow through your support — a community-based exchange of help and trust.            
+            </p>
+          </div>
+        </div>
+
+        <div className="student-advantages">
+          <div className="advantage-card">
+            <FiUsers className="advantage-icon" />
+            <h4>Tech Help by Real People</h4>
+            <p>Our team understands your daily struggles and offers practical support.</p>
+          </div>
+          
+          <div className="advantage-card">
+            <FiZap className="advantage-icon" />
+            <h4>Smart & Fast Solutions</h4>
+            <p>We use the latest tools and know-how to solve your tech headaches quickly.</p>
+          </div>
+          
+          <div className="advantage-card">
+            <FiDollarSign className="advantage-icon" />
+            <h4>Affordable & Honest</h4>
+            <p>Transparent pricing, no hidden costs — designed to fit within your budget.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+  import React from "react";
+  import "../css/CategorySection.css"; 
+
+  export default function CategorySection({ services, scrollToForm, refs }) {
+    return (
+      <div className="category-grid-wrapper">
+        {Object.entries(services).map(([category, items]) => (
+          <section 
+            key={category} 
+            className="category-section" 
+            ref={refs[category]}
+          >
+            <div className="section-header">
+              <h2 className="section-title">{category}</h2>
+              <p className="section-subtitle">
+                Professional solutions for your needs
+              </p>
+            </div>
+            
+            <div className="service-table-container">
+              <div className="service-table">
+                {items.map((service, index) => (
+                  <div 
+                    key={`${category}-${index}`} 
+                    className={`service-row ${service.popular ? 'popular' : ''}`}
+                  >
+                    <div className="service-info">
+                      <h3 className="service-name">{service.name}</h3>
+                      {service.popular && (
+                        <span className="popular-badge">Most Popular</span>
+                      )}
+                    </div>
+
+                    <div className="service-details">
+                      <span className="service-price">{service.price}</span>
+                      <span className="service-time">{service.time}</span>
+                    </div>
+
+                    <button 
+                      className="service-book" 
+                      onClick={scrollToForm}
+                    >
+                      Book Now
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+    );
+  }
+
+/*============ContactForm.jsx=========================*/
+
+import { FiArrowRight, FiMessageSquare, FiMail, FiPhone } from "react-icons/fi";
+import { services } from '../App.jsx';
+import '../css/ContactForm.css'; 
+
+export default function ContactForm({ formRef }) {
+  const contactMethods = [
+    {
+      icon: <FiMail className="contact-icon" />,
+      link: "mailto:contact@zwez.online",
+      text: "contact@zwez.online",
+      className: "contact-method"
+    },
+    {
+      icon: <FiPhone className="contact-icon" />,
+      link: "tel:+971503881148",
+      text: "+971 50 388 1148",
+      className: "contact-method"
+    },
+    {
+      icon: <FiMessageSquare className="contact-icon" />,
+      link: "https://wa.me/+971503881148",
+      text: "WhatsApp Chat",
+      className: "contact-method whatsapp",
+      extraProps: { target: "_blank", rel: "noopener noreferrer" }
+    }
+  ];
+
+  return (
+    <section className="contact-section" ref={formRef}id="contact">
+      <div className="contact-container">
+        <div className="contact-info">
+          <h2 className="contact-title">Get in Touch</h2>
+          <p className="contact-subtitle">
+            Ready to book a service or have questions? We're here to help.
+          </p>
+          
+          <div className="contact-methods">
+            {contactMethods.map((method, index) => (
+              <a
+                key={index}
+                href={method.link}
+                className={method.className}
+                {...method.extraProps || {}}
+              >
+                {method.icon}
+                {method.text}
+              </a>
+            ))}
+          </div>
+        </div>
+        
+        <form
+          className="contact-form"
+          id="requestForm"
+          action="https://formsubmit.co/contact@zwez.online"
+          method="POST"
+        >
+          <h2 className="form-title">Service Request Form</h2>
+          
+          {[
+            {
+              id: "name",
+              label: "Your Name",
+              type: "text",
+              placeholder: "Enter your name"
+            },
+            {
+              id: "email",
+              label: "Email Address",
+              type: "email",
+              placeholder: "Enter your email"
+            }
+          ].map((field) => (
+            <div key={field.id} className="form-group">
+              <label htmlFor={field.id}>{field.label}</label>
+              <input
+                type={field.type}
+                id={field.id}
+                name={field.id}
+                required
+                placeholder={field.placeholder}
+              />
+            </div>
+          ))}
+          
+          <div className="form-group">
+            <label htmlFor="service">Service Needed</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              {Object.entries(services).map(([category, items]) => (
+                <optgroup key={category} label={category}>
+                  {items.map((service, index) => (
+                    <option
+                      key={`${category}-${index}`}
+                      value={`${category} - ${service.name}`}
+                    >
+                      {service.name} ({service.price})
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="message">Details</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+              placeholder="Describe what you need help with..."
+            ></textarea>
+          </div>
+          
+          <button type="submit" className="submit-button">
+            Send Request <FiArrowRight />
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
+/*============CoreValues.jsx=========================*/
+
+import React from "react";
+import { FiEye, FiTarget, FiUsers } from "react-icons/fi";
+import "../css/CoreValues.css"; 
+
+export default function CoreValues() {
+  return (
+    <section className="core-values">
+      <div className="values-container">
+        <div className="value-card vision">
+          <div className="icon-wrapper">
+            <FiEye className="value-icon" />
+          </div>
+          <h3>Our Vision</h3>
+          <p>Empowering Dubai's youth through practical entrepreneurship while delivering affordable, tech-driven solutions</p>
+        </div>
+
+        <div className="value-card mission">
+          <div className="icon-wrapper">
+            <FiTarget className="value-icon" />
+          </div>
+          <h3>Our Mission</h3>
+          <p>Provide reliable, student-priced services that help residents reclaim their time</p>
+        </div>
+
+        <div className="value-card why-us">
+          <div className="icon-wrapper">
+            <FiUsers className="value-icon" />
+          </div>
+          <h3>Why Choose Us</h3>
+          <p>Gen-Z problem solvers combining tech savvy with personal understanding of student needs</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+/*============Footer.jsx=========================*/
+
+// src/components/Footer.js
+import React from "react";
+import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import "../css/Footer.css"; 
+
+export default function Footer() {
+  return (
+    <footer className="premium-footer">
+      <div className="footer-container">
+
+        <div className="footer-left">
+          <h3>Zwez Services</h3>
+          <p>
+            At Zwez Services, we’re all about making life a little easier. We offer hassle-free, time-saving assistance to help you manage your day efficiently — from errands to tech support and personal tasks.
+          </p>
+          <p>
+            What makes us different? Zwez is run by ambitious teens turning a small side hustle into something meaningful — built on connection, not just business.
+          </p>
+          <p>
+            Our goal? To be more than just a service — to be trusted friends who’ve earned your confidence, because trust is everything in today’s world.
+          </p>
+        </div>
+
+        <div className="footer-right">
+          <div className="footer-quick-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#services">Our Services</a></li>
+              <li><a href="#contact">Contact Form</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-contact">
+            <h4>Contact Us</h4>
+            <ul>
+              <li><FaPhoneAlt /> +971 50 388 1148</li>
+              <li><FaEnvelope /> contact@zwez.online</li>
+              <li><FaWhatsapp /> <a href="https://wa.me/+971503881148" target="_blank" rel="noreferrer">Chat on WhatsApp</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div className="footer-bottom">
+        &copy; {new Date().getFullYear()} Zwez. All rights reserved.
+      </div>
+    </footer>
+  );
+}
+
+/*============Hero.jsx=========================*/
+
+import React from "react";
+import { FiArrowRight, FiPhone } from "react-icons/fi";
+import "../css/Hero.css"; 
+
+export default function Hero({ scrollToForm, darkMode }) {
+  return (
+    <header className="hero">
+      <div className="hero-content">
+        <h1 className={`hero-title ${darkMode ? 'hero-title-dark' : ''}`}>
+          Premium On-Demand 
+          <span className="highlight"> Services </span> 
+        in Dubai
+        </h1>
+        <p className="hero-subtitle">
+          "Your personal techie, assistant, and problem-solver – all in one call."
+        </p>
+        <div className="hero-actions">
+          <button className="primary-button" onClick={scrollToForm}>
+            Book a Service <FiArrowRight />
+          </button>
+          <a href="tel:+971503881148" className="secondary-button">
+            <FiPhone /> Call Now
+          </a>
+        </div>
+      </div>
+      <img 
+        src="/hero-image.jpg" 
+        alt="Zwez Services Team in Dubai" 
+        className="hero-image"
+        loading="eager"  // Important for hero images
+      />
+    </header>
+  );
+}
+
+/*============Hero.jsx=========================*/
+
+import React from "react";
+import { FiArrowRight, FiPhone } from "react-icons/fi";
+import "../css/Hero.css"; 
+
+export default function Hero({ scrollToForm, darkMode }) {
+  return (
+    <header className="hero">
+      <div className="hero-content">
+        <h1 className={`hero-title ${darkMode ? 'hero-title-dark' : ''}`}>
+          Premium On-Demand 
+          <span className="highlight"> Services </span> 
+        in Dubai
+        </h1>
+        <p className="hero-subtitle">
+          "Your personal techie, assistant, and problem-solver – all in one call."
+        </p>
+        <div className="hero-actions">
+          <button className="primary-button" onClick={scrollToForm}>
+            Book a Service <FiArrowRight />
+          </button>
+          <a href="tel:+971503881148" className="secondary-button">
+            <FiPhone /> Call Now
+          </a>
+        </div>
+      </div>
+      <img 
+        src="/hero-image.jpg" 
+        alt="Zwez Services Team in Dubai" 
+        className="hero-image"
+        loading="eager"  // Important for hero images
+      />
+    </header>
+  );
+}
+
+/*============Navbar.jsx=========================*/
+
+import React from "react";
+import { FiSun, FiMoon, FiArrowRight, FiMenu } from "react-icons/fi";
+import '../css/Navbar.css'; 
+
+export default function Navbar({
+  services,
+  activeCategory,
+  setActiveCategory,
+  scrollToSection,
+  scrollToForm,
+  darkMode,
+  setDarkMode,
+  menuOpen,
+  setMenuOpen,
+}) {
+  return (
+    <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
+      <div className="nav-container">
+        {/* Logo */}
+        <div
+          className="logo"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <span className="logo-text">Zwez</span>
+          <span className="logo-dot">.</span>
+        </div>
+
+        {/* Desktop Links */}
+        <div className="nav-links">
+          {Object.keys(services).map((category) => (
+            <button
+              key={category}
+              onClick={() => scrollToSection(category)}
+              className={`nav-link ${
+                activeCategory === category ? 'active' : ''
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Actions */}
+        <div className="nav-actions">
+          {/* Theme Toggle */}
+          <button
+            className="theme-toggle"
+            onClick={() => setDarkMode(!darkMode)}
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? <FiSun /> : <FiMoon />}
+          </button>
+
+          {/* Request Service CTA */}
+          <button className="cta-button" onClick={scrollToForm}>
+            Request Service <FiArrowRight />
+          </button>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <FiMenu
+              className={`hamburger-icon ${menuOpen ? 'open' : ''}`}
+              size={24}
+              style={{ color: darkMode ? '#fff' : '#111827' }}
+            />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+        {Object.keys(services).map((category) => (
+          <button
+            key={category}
+            onClick={() => scrollToSection(category)}
+            className={`mobile-link ${
+              activeCategory === category ? 'active' : ''
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+        <button className="mobile-cta" onClick={scrollToForm}>
+          Request Service
+        </button>
+      </div>
+    </nav>
+  );
+}
+
+/*============ServicesGrid.jsx=========================*/
+
+import React from "react";
+import { FiArrowRight, FiCheck } from "react-icons/fi";
+import "../css/ServicesGrid.css"; 
+
+export default function ServicesGrid({ services, scrollToSection, refs }) {
+  return (
+    <section className="services-section" id="services">
+      <div className="section-header">
+        <h2 className="section-title">Our Services</h2>
+        <p className="section-subtitle">Quick solutions for your everyday needs</p>
+      </div>
+      
+      <div className="services-grid">
+        {Object.entries(services).map(([category, items]) => (
+          <div 
+            key={category} 
+            className="service-card"
+            onClick={() => scrollToSection(category)}
+            ref={refs[category]}
+          >
+            <div className="card-content">
+              <h3 className="card-title">{category}</h3>
+              <ul className="service-list">
+                {items.slice(0, 2).map((service, index) => (
+                  <li key={index} className="service-item">
+                    <FiCheck className="check-icon" />
+                    {service.name}
+                  </li>
+                ))}
+              </ul>
+              <button className="card-button">
+                View All <FiArrowRight />
+              </button>
+            </div>
+            <div className="card-decoration"></div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/*============Testimonials.jsx=========================*/
+
+import React from "react";
+import "../css/Testimonials.css";
+
+export default function Testimonials({ testimonials }) {
+  return (
+    <section className="testimonials-section" id="testimonials">
+      <div className="section-header">
+        <h2 className="section-title">Client Experiences</h2>
+        <p className="section-subtitle">What our customers say about us</p>
+      </div>
+      
+      <div className="testimonials-grid">
+        {testimonials.map((testimonial, index) => (
+          <div key={index} className="testimonial-card">
+            <div className="testimonial-content">
+              <p className="testimonial-quote">"{testimonial.quote}"</p>
+              <p className="testimonial-author">— {testimonial.author}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

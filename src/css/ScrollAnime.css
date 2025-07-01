@@ -1,72 +1,72 @@
 [data-scroll] {
-    --scroll-opacity: 0;
-    --scroll-translate-y: 20px;
-    --scroll-translate-x: 0px;
-    --scroll-scale: 0.95;
+  --scroll-opacity: 0;
+  --scroll-translate-y: 20px;
+  --scroll-translate-x: 0px;
+  --scroll-scale: 0.95;
+  
+  opacity: var(--scroll-opacity);
+  transform: 
+    translateY(var(--scroll-translate-y))
+    translateX(var(--scroll-translate-x))
+    scale(var(--scroll-scale));
+  transition: 
+    opacity 1s var(--scroll-easing, cubic-bezier(0.16, 1, 0.3, 1)),
+    transform 1s var(--scroll-easing, cubic-bezier(0.16, 1, 0.3, 1));
+  will-change: opacity, transform;
+}
+
+[data-scroll="fade-in"] {
+  --scroll-translate-y: 20px;
+  --scroll-translate-x: 0px;
+}
+
+[data-scroll="fade-left"] {
+  --scroll-translate-y: 0px;
+  --scroll-translate-x: -40px;
+}
+
+[data-scroll="fade-right"] {
+  --scroll-translate-y: 0px;
+  --scroll-translate-x: 40px;
+}
+
+[data-scroll="zoom-in"] {
+  --scroll-scale: 0.8;
+}
+
+[data-scroll].is-visible {
+  --scroll-opacity: 1;
+  --scroll-translate-y: 0px;
+  --scroll-translate-x: 0px;
+  --scroll-scale: 1;
+}
+
+/* Modern scroll-triggered animations */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    [data-scroll] {
+      animation: 
+        fadeIn 1s var(--scroll-easing) forwards,
+        float 6s ease-in-out infinite;
+      animation-timeline: view();
+      animation-range: entry 20% cover 30%;
+    }
     
-    opacity: var(--scroll-opacity);
-    transform: 
-      translateY(var(--scroll-translate-y))
-      translateX(var(--scroll-translate-x))
-      scale(var(--scroll-scale));
-    transition: 
-      opacity 1s var(--scroll-easing, cubic-bezier(0.16, 1, 0.3, 1)),
-      transform 1s var(--scroll-easing, cubic-bezier(0.16, 1, 0.3, 1));
-    will-change: opacity, transform;
-  }
-
-  [data-scroll="fade-in"] {
-    --scroll-translate-y: 20px;
-    --scroll-translate-x: 0px;
-  }
-
-  [data-scroll="fade-left"] {
-    --scroll-translate-y: 0px;
-    --scroll-translate-x: -40px;
-  }
-
-  [data-scroll="fade-right"] {
-    --scroll-translate-y: 0px;
-    --scroll-translate-x: 40px;
-  }
-
-  [data-scroll="zoom-in"] {
-    --scroll-scale: 0.8;
-  }
-
-  [data-scroll].is-visible {
-    --scroll-opacity: 1;
-    --scroll-translate-y: 0px;
-    --scroll-translate-x: 0px;
-    --scroll-scale: 1;
-  }
-
-  /* Modern scroll-triggered animations */
-  @media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: view()) {
-      [data-scroll] {
-        animation: 
-          fadeIn 1s var(--scroll-easing) forwards,
-          float 6s ease-in-out infinite;
-        animation-timeline: view();
-        animation-range: entry 20% cover 30%;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: 
+          translateY(var(--scroll-translate-y))
+          translateX(var(--scroll-translate-x))
+          scale(var(--scroll-scale));
       }
-      
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: 
-            translateY(var(--scroll-translate-y))
-            translateX(var(--scroll-translate-x))
-            scale(var(--scroll-scale));
-        }
-        to {
-          opacity: 1;
-          transform: 
-            translateY(0)
-            translateX(0)
-            scale(1);
-        }
+      to {
+        opacity: 1;
+        transform: 
+          translateY(0)
+          translateX(0)
+          scale(1);
       }
     }
   }
+}
