@@ -247,7 +247,7 @@
   margin: var(--space-lg) auto;
   width: calc(100% - var(--space-md)); /* Full width with padding */
   max-width: 100%;
-  height: 2350px ; /* Flexible height */
+  height: auto ; /* Flexible height */
   min-height: 600px; /* Minimum height for mobile */
 
   

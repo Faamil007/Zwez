@@ -4,7 +4,7 @@
   --hover-elevation: 10px;
   --ripple-duration: 0.6s;
   --gradient-angle: 135deg;
-  --footer-wave-height: 50px;
+  --footer-wave-height: 20px;
   
   background: var(--footer-bg-dynamic);
   color: var(--footer-text);
@@ -387,7 +387,7 @@
   }
   
   .premium-footer {
-    --footer-wave-height: 30px;
+    --footer-wave-height: 10px;
     clip-path: polygon(
       0 0, 
       100% 0, 
