@@ -235,4 +235,92 @@
   }
 }
 
+.about-section {
+  /* Mobile-first variables */
+  --glass-blur: 8px; /* Reduced blur for mobile performance */
+  --parallax-depth: 20px; /* Reduced parallax for mobile */
+  --clip-wave: polygon(0% 0%, 100% 0%, 100% 95%, 80% 97%, 60% 95%, 40% 97%, 20% 95%, 0% 97%); /* Smoother wave */
+  
+  /* Base styles */
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  margin: var(--space-lg) auto;
+  width: calc(100% - var(--space-md)); /* Full width with padding */
+  max-width: 100%;
+  height: 2350px ; /* Flexible height */
+  min-height: 600px; /* Minimum height for mobile */
+
+  
+
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+  .about-section {
+      --glass-blur: 6px;
+      --parallax-depth: 10px;
+      margin: var(--space-md) auto;
+      padding: var(--space-md);
+      min-height: 500px;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 96%, 90% 98%, 80% 96%, 70% 98%, 60% 96%, 50% 98%, 40% 96%, 30% 98%, 20% 96%, 10% 98%, 0% 96%); /* Simpler wave */
+  }
+}
+
+/* Performance-friendly animations */
+@keyframes fadeInUp {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes gentleWave {
+  0%, 100% {
+      clip-path: var(--clip-wave);
+  }
+  50% {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 80% 95%, 60% 92%, 40% 95%, 20% 92%, 0% 95%);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .about-section {
+      animation: fadeIn 0.5s ease forwards !important;
+      clip-path: none !important;
+  }
+  
+  @keyframes fadeIn {
+      to { opacity: 1; }
+  }
+}
+
+/* Content inside the section */
+.about-content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-md);
+}
+
+/* Background elements (optional) */
+.about-bg-element {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Responsive typography */
+.about-title {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin-bottom: var(--space-sm);
+}
+
+.about-text {
+  font-size: clamp(1rem, 3vw, 1.1rem);
+  line-height: 1.6;
+}
 /* Core Values Section */

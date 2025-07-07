@@ -99,8 +99,7 @@
   body,
   .value-card,
   .navbar,
-  .service-card,
-  .hero-image {
+  .service-card {
     transition-duration: var(--theme-transition-duration);
   }
   body {
@@ -361,27 +360,7 @@
   .theme-toggle:hover::after {
     opacity: 0.1;
   }
-  .cta-button {
-    background: var(--gradient);
-    color: white;
-    border: none;
-    padding: var(--space-sm) var(--space-md);
-    border-radius: var(--border-radius);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-
+  
   .menu-toggle {
     display: none;
     background: none;
@@ -681,115 +660,7 @@
     transform: scaleX(1);
   }
 
-  /* Hero Image - 3D Effect */
-  .hero-image {
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: 
-      translateY(-50%) 
-      perspective(1000px) 
-      rotateY(-10deg);
-    width: 50%;
-    height: 80%;
-    object-fit: cover;
-    border-radius: var(--border-radius-xl);
-    box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.3),
-      0 0 60px rgba(67, 97, 238, 0.3);
-    z-index: 1;
-    transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
-    filter: 
-      drop-shadow(0 10px 20px rgba(0,0,0,0.3))
-      brightness(1.05)
-      contrast(1.1);
-    mix-blend-mode: normal;
-    opacity: 0.95;
-  }
 
-  .hero-image:hover {
-    transform: 
-      translateY(-50%) 
-      perspective(1000px) 
-      rotateY(0deg)
-      scale(1.03);
-    filter: 
-      drop-shadow(0 15px 30px rgba(67, 97, 238, 0.4))
-      brightness(1.1)
-      contrast(1.2);
-    opacity: 1;
-  }
-
-  /* Scroll Indicator */
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 50px;
-    border: 2px solid var(--primary-color);
-    border-radius: 15px;
-    animation: scrollIndicator 2s infinite;
-    opacity: 0;
-    animation-delay: 1.5s;
-  }
-
-  @keyframes scrollIndicator {
-    0% { 
-      transform: translateY(0) translateX(-50%);
-      opacity: 0.5;
-    }
-    50% { 
-      transform: translateY(10px) translateX(-50%);
-      opacity: 1;
-    }
-    100% { 
-      transform: translateY(0) translateX(-50%);
-      opacity: 0.5;
-    }
-  }
-
-  /* Responsive Adjustments */
-  @media (max-width: 1024px) {
-    .hero {
-      flex-direction: column;
-      text-align: center;
-      clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-    }
-    
-    .hero-image {
-      position: relative;
-      width: 80%;
-      height: 300px;
-      margin-top: var(--space-xl);
-      transform: 
-        translateY(0) 
-        perspective(1000px) 
-        rotateY(-5deg);
-    }
-    
-    .hero-image:hover {
-      transform: 
-        translateY(0) 
-        perspective(1000px) 
-        rotateY(0deg)
-        scale(1.02);
-    }
-  }
-
-  /* Reduced motion preference */
-  @media (prefers-reduced-motion: reduce) {
-    .hero-content,
-    .hero-title,
-    .hero-subtitle,
-    .hero-actions,
-    .hero-image {
-      animation: none !important;
-      transition: none !important;
-    }
-  }
   /* ====== About Section ====== */
   /* ====== About Section - Ultra Enhanced ====== */
   .about-section {
@@ -801,6 +672,7 @@
     border-radius: var(--border-radius-lg);
     margin: var(--space-xl) auto;
     max-width: 1200px;
+    height:1200px;
     box-shadow: 
       0 10px 30px var(--shadow-color),
       0 0 0 1px rgba(255,255,255,0.1);
@@ -863,7 +735,7 @@
   }
 
   .team-photo {
-    width: 40%;
+    width: 100%;
     border-radius: var(--border-radius);
     box-shadow: 
       0 15px 30px rgba(0,0,0,0.2),
@@ -1157,11 +1029,12 @@
     }
     
     .hero-image {
-      position: relative;
+      position:static;
       width: 100%;
       height: 300px;
-      transform: none !important;
-      background-position: center;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover; /* or 'contain' */
       filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
       mix-blend-mode: normal;
       opacity: 1;

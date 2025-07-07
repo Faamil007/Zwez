@@ -1,8 +1,15 @@
+/* Category Section - Ultra Enhanced */
+.category-grid-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
 .category-section {
-  --glass-blur: 12px;
+  --glass-blur: 16px;
   --parallax-depth: 40px;
   --hover-elevation: 15px;
-  --stripe-opacity: 0.03;
+  --stripe-opacity: 0.05;
   --highlight-width: 4px;
   --transition-speed: 0.4s;
   --ripple-duration: 0.6s;
@@ -11,7 +18,7 @@
   margin-bottom: var(--space-xxl);
   position: relative;
   overflow: hidden;
-  view-timeline-name: --category-section;
+  perspective: 1000px;
 }
 
 /* Dynamic gradient background with animation */
@@ -37,7 +44,7 @@
   animation: 
     gradientRotate 25s linear infinite,
     subtlePulse 10s ease infinite alternate;
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 /* Animated grid overlay */
@@ -57,24 +64,53 @@
   animation: gridMove 20s linear infinite;
 }
 
-@keyframes gridMove {
-  0% { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
+.section-header {
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.section-title {
+  font-size: var(--text-xxl);
+  margin-bottom: var(--space-sm);
+  display: inline-block;
+  position: relative;
+  color: var(--text-color);
+}
+
+.title-underline {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-title:hover .title-underline {
+  transform: scaleX(1);
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  opacity: 0.8;
 }
 
 .service-table-container {
   max-width: 1200px;
   margin: 0 auto;
-  overflow-x: auto;
   perspective: 1000px;
   transform-style: preserve-3d;
 }
 
 .service-table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 var(--space-sm);
-  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
   position: relative;
 }
 
@@ -120,62 +156,33 @@
   box-shadow: 
     0 4px 6px var(--shadow-color),
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  opacity: 0;
-  animation: 
-    fadeInUp 0.6s var(--stagger-delay) forwards,
-    float 6s ease-in-out infinite;
-  view-timeline-name: --service-row;
-  animation-timeline: --service-row;
-  animation-range: entry 20% cover 30%;
+  z-index: 1;
 }
 
-/* Staggered animation delays */
-.service-row:nth-child(1) { --stagger-delay: 0.1s; }
-.service-row:nth-child(2) { --stagger-delay: 0.3s; }
-.service-row:nth-child(3) { --stagger-delay: 0.5s; }
-.service-row:nth-child(4) { --stagger-delay: 0.7s; }
-
-/* Hover effects */
-.service-row:hover {
-  --row-scale: 1.02;
-  --row-translate-y: -5px;
-  --row-rotate-x: 1deg;
-  
-  background: rgba(var(--card-bg-rgb), 0.9);
-  box-shadow: 
-    0 10px 20px var(--shadow-color),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-  z-index: 2;
-}
-
-/* Ripple click effect */
-.service-row:active::after {
-  content: '';
+.hover-effect {
   position: absolute;
-  top: var(--mouse-y);
-  left: var(--mouse-x);
-  width: 0;
-  height: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(
-    circle closest-side,
-    rgba(255, 255, 255, 0.3),
-    transparent
+    circle at var(--mouse-x) var(--mouse-y),
+    rgba(67, 97, 238, 0.1) 0%,
+    transparent 70%
   );
-  transform: translate(-50%, -50%);
-  animation: ripple var(--ripple-duration) ease-out;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
 }
 
-@keyframes ripple {
-  to {
-    width: 200%;
-    height: 200%;
-    opacity: 0;
-  }
+.service-row:hover .hover-effect {
+  opacity: 1;
 }
 
 .service-row.popular {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Animated highlight bar */
@@ -201,11 +208,6 @@
   opacity: 1;
 }
 
-@keyframes highlightPulse {
-  0% { opacity: 0.6; }
-  100% { opacity: 1; }
-}
-
 .service-info {
   flex: 1;
   position: relative;
@@ -216,26 +218,10 @@
   font-weight: 600;
   margin-bottom: var(--space-xs);
   position: relative;
-  display: inline-block;
-  background: linear-gradient(
-    to right,
-    var(--text-color),
-    var(--text-color)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
   transition: all var(--transition-speed) ease;
-}
-
-.service-row:hover .service-name {
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--accent-color)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
 }
 
 /* Floating badge effect */
@@ -246,7 +232,9 @@
   border-radius: 20px;
   font-size: var(--text-sm);
   font-weight: 600;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
   transition: all var(--transition-speed) ease;
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -255,12 +243,8 @@
   border: 1px solid rgba(247, 37, 133, 0.2);
 }
 
-.service-row:hover .popular-badge {
-  transform: translateY(-3px);
-  box-shadow: 
-    0 4px 8px rgba(0, 0, 0, 0.15),
-    0 0 10px rgba(247, 37, 133, 0.2);
-  background: rgba(247, 37, 133, 0.2);
+.badge-icon {
+  font-size: var(--text-sm);
 }
 
 .service-details {
@@ -279,20 +263,10 @@
   transform: translateZ(20px);
 }
 
-.service-row:hover .service-price {
-  color: var(--accent-color);
-  text-shadow: 0 0 10px rgba(67, 97, 238, 0.2);
-}
-
 .service-time {
   font-size: var(--text-sm);
   opacity: 0.8;
   transition: all var(--transition-speed) ease;
-}
-
-.service-row:hover .service-time {
-  opacity: 1;
-  transform: translateX(-5px);
 }
 
 /* Enhanced button with 3D effect */
@@ -303,9 +277,8 @@
   background: var(--gradient);
   color: white;
   border: none;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
   border-radius: var(--border-radius);
-  font-family: var(--font-heading);
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
@@ -318,85 +291,67 @@
   box-shadow: 
     0 var(--btn-depth) 0 0 color-mix(in oklab, var(--primary-color), black 20%),
     var(--btn-glow);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
   overflow: hidden;
+  z-index: 1;
 }
 
-.service-book::before {
-  content: '';
+.button-icon {
+  transition: transform 0.3s ease;
+}
+
+.service-book:hover .button-icon {
+  transform: translateX(3px);
+}
+
+.button-glow {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0) 50%
-  );
+  background: var(--gradient);
   opacity: 0;
-  transition: opacity var(--transition-speed) ease;
+  z-index: -1;
+  filter: blur(20px);
+  transition: opacity 0.3s ease;
 }
 
-.service-book:hover {
-  transform: 
-    translateZ(10px)
-    translateY(-3px);
-  box-shadow: 
-    0 calc(var(--btn-depth) + 3px) 0 0 color-mix(in oklab, var(--primary-color), black 20%),
-    0 0 25px rgba(67, 97, 238, 0.5);
+.service-book:hover .button-glow {
+  opacity: 0.6;
 }
 
-.service-book:hover::before {
-  opacity: 1;
+/* Keyframe Animations */
+@keyframes gradientRotate {
+  from { --gradient-angle: 0deg; }
+  to { --gradient-angle: 360deg; }
 }
 
-.service-book:active {
-  transform: 
-    translateZ(5px)
-    translateY(1px);
-  box-shadow: 
-    0 2px 0 0 color-mix(in oklab, var(--primary-color), black 20%),
-    0 0 15px rgba(67, 97, 238, 0.3);
+@keyframes subtlePulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.02); }
 }
 
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .category-section::before {
-    opacity: 0.3;
-  }
-  
-  .service-row {
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(30, 30, 40, 0.8);
-  }
-  
-  .service-row:hover {
-    background: rgba(40, 40, 50, 0.9);
-  }
-  
-  .service-book {
-    --btn-glow: 0 0 15px rgba(67, 97, 238, 0.2);
-  }
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
 }
 
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .category-section::before,
-  .category-section::after,
-  .service-row,
-  .service-book {
-    animation: none !important;
-    transition: none !important;
-  }
-  
-  .service-row {
-    opacity: 1;
-    transform: none;
-  }
+@keyframes highlightPulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
 }
 
-/* Container queries */
-@container (max-width: 800px) {
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .service-row {
     flex-direction: column;
     align-items: flex-start;
@@ -413,58 +368,21 @@
   .service-book {
     width: 100%;
     margin-top: var(--space-md);
+    justify-content: center;
   }
 }
 
-/* Custom cursor for interactive elements */
-@media (pointer: fine) {
-  .service-row {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="none" stroke="%234361ee" stroke-width="2"/></svg>') 16 16, pointer;
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .category-section::before,
+  .category-section::after,
+  .service-row,
+  .service-book {
+    animation: none !important;
+    transition: none !important;
   }
   
-  .service-book {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="none" stroke="white" stroke-width="2"/></svg>') 16 16, pointer;
-  }
-}
-
-/* Houdini paint worklet fallback */
-@supports (background: paint(something)) {
   .service-row {
-    --pattern-seed: 1234;
-    --pattern-colors: %234361ee, %233f37c9;
-    background-image: paint(checkerboard);
+    transform: none;
   }
-}
-
-/* Scroll-triggered animations */
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-/* Shape-based effects */
-.service-row.popular::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 30px 30px 0;
-  border-color: transparent var(--highlight-color) transparent transparent;
-  opacity: 0.2;
-  transition: opacity var(--transition-speed) ease;
-}
-
-.service-row.popular:hover::after {
-  opacity: 0.4;
 }
