@@ -121,3 +121,8 @@
 .card-3d:hover::before {
   transform: scaleY(1) translateZ(-10px);
 }
+
+    /* 3D effect fallbacks */
+    .card-3d {
+      transform: none !important;
+    }

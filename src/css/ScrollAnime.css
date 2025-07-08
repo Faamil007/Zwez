@@ -70,3 +70,40 @@
     }
   }
 }
+
+    /* Scroll effect adjustments */
+    [data-scroll] {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    /* ====== Advanced Scroll Effects ====== */
+  .scroll-container {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+  }
+
+  .scroll-section {
+    scroll-snap-align: start;
+    view-timeline-name: --section;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-section {
+      animation: fadeIn linear both;
+      animation-timeline: --section;
+      animation-range: entry 10% cover 20%;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }

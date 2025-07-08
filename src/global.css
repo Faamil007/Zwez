@@ -90,10 +90,7 @@
     padding: 0;
   }
 
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-  }
+
 
   /* ====== Theme Transitions ====== */
   body,
@@ -208,21 +205,7 @@
     margin: 0 auto;
   }
 
-  /* ====== Navigation ====== */
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--nav-bg);
-    backdrop-filter: blur(var(--blur-amount));
-    -webkit-backdrop-filter: blur(var(--blur-amount));
-    z-index: 1000;
-    box-shadow: 0 2px 10px var(--shadow-color);
-    transition: all var(--transition-speed) var(--transition-easing);
-    background-color: var(--nav-bg-dynamic); /* New dynamic variable */
 
-  }
  
   /* ====== Ultra-Responsive Design with Advanced Effects ====== */
   @media (max-width: 1024px) {
@@ -244,18 +227,6 @@
       filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
       mix-blend-mode: normal;
       opacity: 1;
-    }
-
-    /* Glassmorphism adjustments */
-    .glass-card {
-      --glass-blur: 12px;
-      backdrop-filter: blur(var(--glass-blur));
-      -webkit-backdrop-filter: blur(var(--glass-blur));
-    }
-
-    /* 3D effect fallbacks */
-    .card-3d {
-      transform: none !important;
     }
   }
 
@@ -286,25 +257,9 @@
       filter: none;
     }
     
-    .service-row {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-md);
-      transform: none !important;
-    }
-    
-    .service-details {
-      align-items: flex-start;
-      margin-right: 0;
-      margin-bottom: var(--space-md);
-    }
 
-    /* Scroll effect adjustments */
-    [data-scroll] {
-      animation: none !important;
-      transform: none !important;
-      opacity: 1 !important;
-    }
+
+
 
     /* Motion path fallback */
     .motion-path {
@@ -330,11 +285,7 @@
       backdrop-filter: none;
     }
     
-    .whatsapp-float {
-      bottom: var(--space-md);
-      right: var(--space-md);
-      --btn-size: 50px;
-    }
+
 
     /* Houdini fallback */
     .houdini-card {
@@ -428,31 +379,7 @@
     }
   }
 
-  /* ====== Advanced Scroll Effects ====== */
-  .scroll-container {
-    scroll-snap-type: y proximity;
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) transparent;
-  }
-
-  .scroll-section {
-    scroll-snap-align: start;
-    view-timeline-name: --section;
-  }
-
-  @keyframes fadeIn {
-    to { opacity: 1; transform: none; }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .scroll-section {
-      animation: fadeIn linear both;
-      animation-timeline: --section;
-      animation-range: entry 10% cover 20%;
-    }
-  }
-
+  
   /* ====== Houdini Paint Worklet Fallbacks ====== */
   @supports not (background: paint(something)) {
     .houdini-effect {
@@ -541,11 +468,6 @@
     transition: clip-path 0.6s ease;
   }
 
-  .shape-mask:hover {
-    clip-path: polygon(
-      50% 0%, 100% 50%, 50% 100%, 0% 50%
-    );
-  }
 
   /* ====== Performance Optimizations ====== */
   .performance-optimized {

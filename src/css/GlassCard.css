@@ -278,3 +278,10 @@
 .glass-card:hover .glass-card-border {
   opacity: 0.3;
 }
+
+    /* Glassmorphism adjustments */
+    .glass-card {
+      --glass-blur: 12px;
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+    }
