@@ -110,7 +110,7 @@ export default function Hero({ scrollToForm }) {
       </motion.div>
       
       <motion.img 
-        src="/hero-image.jpg" 
+        src="/hero-image.webp" 
         alt="Zwez Services Team in Dubai" 
         className="hero-image"
         loading="eager"

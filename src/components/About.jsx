@@ -77,7 +77,7 @@ export default function About() {
               }}
             >
               <img 
-                src="/team-photo.png" 
+                src="/team-photo.webp" 
                 alt="Our student team" 
                 className="team-photo"
               />
