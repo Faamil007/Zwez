@@ -232,24 +232,7 @@
       --glass-blur: 10px;
     }
     
-    .hero {
-      flex-direction: column;
-      text-align: center;
-      padding-top: var(--space-xxl);
-      clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-    }
-    
-    .hero-content {
-      max-width: 100%;
-      margin-bottom: var(--space-xl);
-      animation: none !important;
-      transform: none !important;
-    }
-    
-    .hero-actions {
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+ 
     
     .hero-image {
       position:static;
@@ -338,10 +321,7 @@
       --text-xl: 1.5rem;
       --glass-blur: 8px;
     }
-    
-    .hero-actions {
-      flex-direction: column;
-    }
+
     
     .primary-button,
     .secondary-button {

@@ -241,6 +241,8 @@
   mix-blend-mode: normal;
 }
 
+
+
 .scroll-indicator {
   position: absolute;
   bottom: 40px;
@@ -312,7 +314,7 @@
   }
   
   .hero-image {
-    position: center;
+    position: relative;
     width: 80%;
     height: 300px;
     margin-top: var(--space-xl);
@@ -324,6 +326,7 @@
   
   .hero-actions {
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
