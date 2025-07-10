@@ -68,13 +68,6 @@
   transform-origin: center;
 }
 
-.about-section:hover {
-  transform: translateY(-5px) scale(1.005);
-  box-shadow: 
-    0 15px 40px var(--shadow-color),
-    0 0 0 1px rgba(255,255,255,0.2),
-    0 0 40px rgba(67, 97, 238, 0.2);
-}
 
 /* Floating Particles */
 .about-section::after {

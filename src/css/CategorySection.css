@@ -14,14 +14,13 @@
   --transition-speed: 0.4s;
   --ripple-duration: 0.6s;
   --stagger-delay: 0.1s;
-  
+
   margin-bottom: var(--space-xxl);
   position: relative;
   overflow: hidden;
   perspective: 1000px;
 }
 
-/* Dynamic gradient background with animation */
 .category-section::before {
   content: '';
   position: absolute;
@@ -30,24 +29,13 @@
   width: 200%;
   height: 200%;
   background: 
-    radial-gradient(
-      circle at 70% 30%, 
-      rgba(67, 97, 238, 0.1) 0%, 
-      transparent 60%
-    ),
-    linear-gradient(
-      var(--gradient-angle),
-      rgba(67, 97, 238, var(--stripe-opacity)) 0%,
-      transparent 100%
-    );
+    radial-gradient(circle at 70% 30%, rgba(67, 97, 238, 0.1) 0%, transparent 60%),
+    linear-gradient(var(--gradient-angle), rgba(67, 97, 238, var(--stripe-opacity)) 0%, transparent 100%);
   z-index: -2;
-  animation: 
-    gradientRotate 25s linear infinite,
-    subtlePulse 10s ease infinite alternate;
+  animation: gradientRotate 25s linear infinite, subtlePulse 10s ease infinite alternate;
   opacity: 0.3;
 }
 
-/* Animated grid overlay */
 .category-section::after {
   content: '';
   position: absolute;
@@ -114,7 +102,6 @@
   position: relative;
 }
 
-/* Glassmorphism table effect */
 .service-table::before {
   content: '';
   position: absolute;
@@ -136,7 +123,7 @@
   --row-scale: 1;
   --row-translate-y: 0;
   --row-rotate-x: 0deg;
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -165,11 +152,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    circle at var(--mouse-x) var(--mouse-y),
-    rgba(67, 97, 238, 0.1) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(67, 97, 238, 0.1) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -185,7 +168,6 @@
   z-index: 2;
 }
 
-/* Animated highlight bar */
 .service-row.popular::before {
   content: '';
   position: absolute;
@@ -194,13 +176,9 @@
   width: var(--highlight-width);
   height: 100%;
   background: var(--gradient);
-  transition: 
-    width var(--transition-speed) ease,
-    opacity var(--transition-speed) ease;
+  transition: width var(--transition-speed) ease, opacity var(--transition-speed) ease;
   opacity: 0.8;
-  animation: 
-    highlightPulse 2s ease infinite alternate,
-    gradientShift 8s ease infinite;
+  animation: highlightPulse 2s ease infinite alternate, gradientShift 8s ease infinite;
 }
 
 .service-row.popular:hover::before {
@@ -224,7 +202,6 @@
   transition: all var(--transition-speed) ease;
 }
 
-/* Floating badge effect */
 .popular-badge {
   background: rgba(247, 37, 133, 0.1);
   color: var(--highlight-color);
@@ -269,11 +246,10 @@
   transition: all var(--transition-speed) ease;
 }
 
-/* Enhanced button with 3D effect */
 .service-book {
   --btn-depth: 4px;
   --btn-glow: 0 0 15px rgba(67, 97, 238, 0.3);
-  
+
   background: var(--gradient);
   color: white;
   border: none;
@@ -285,9 +261,6 @@
   min-width: 120px;
   position: relative;
   transform-style: preserve-3d;
-  transform: 
-    translateZ(0)
-    translateY(0);
   box-shadow: 
     0 var(--btn-depth) 0 0 color-mix(in oklab, var(--primary-color), black 20%),
     var(--btn-glow);
@@ -358,13 +331,13 @@
     gap: var(--space-md);
     padding: var(--space-lg);
   }
-  
+
   .service-details {
     align-items: flex-start;
     margin-right: 0;
     margin-top: var(--space-sm);
   }
-  
+
   .service-book {
     width: 100%;
     margin-top: var(--space-md);
@@ -381,7 +354,7 @@
     animation: none !important;
     transition: none !important;
   }
-  
+
   .service-row {
     transform: none;
   }

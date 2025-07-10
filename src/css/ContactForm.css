@@ -10,40 +10,8 @@
   position: relative;
   overflow: hidden;
   padding: var(--space-xxl) 0;
-  background: 
-    linear-gradient(
-      var(--gradient-angle),
-      var(--bg-color) 0%,
-      var(--bg-color-secondary) 100%
-    );
-  view-timeline-name: --contact-section;
+  background: linear-gradient(var(--gradient-angle), var(--bg-color) 0%, var(--bg-color-secondary) 100%);
   clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
-}
-
-/* Dynamic particle background */
-.contact-section::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: 
-    radial-gradient(
-      circle at 30% 60%, 
-      rgba(67, 97, 238, 0.15) 0%, 
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 70% 30%, 
-      rgba(236, 72, 153, 0.1) 0%, 
-      transparent 60%
-    );
-  z-index: -2;
-  animation: 
-    gradientRotate 30s linear infinite,
-    subtlePulse 12s ease infinite alternate;
-  opacity: 0.15;
 }
 
 /* Floating dots pattern */
@@ -71,20 +39,16 @@
 
 .contact-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: var(--space-xxl);
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
   perspective: 1200px;
-  transform-style: preserve-3d;
 }
 
 /* Contact Info Section - Glass Panel */
 .contact-info {
-  --panel-translate-z: 0px;
-  --panel-rotate-y: 0deg;
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,28 +56,16 @@
   background: rgba(var(--card-bg-rgb), 0.7);
   border-radius: var(--border-radius-xl);
   backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 
-    0 10px 30px var(--shadow-color),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  transform: 
-    translateZ(var(--panel-translate-z))
-    rotateY(var(--panel-rotate-y));
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px var(--shadow-color), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: translateZ(0);
   opacity: 0;
-  animation: 
-    fadeInLeft 0.8s var(--stagger-delay) forwards,
-    float 6s ease-in-out infinite;
+  animation: fadeInLeft 0.8s var(--stagger-delay) forwards, float 6s ease-in-out infinite;
 }
 
 .contact-info:hover {
-  --panel-translate-z: 20px;
-  --panel-rotate-y: -3deg;
-  
-  box-shadow: 
-    0 15px 40px var(--shadow-color),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transform: translateZ(20px) rotateY(-3deg);
+  box-shadow: 0 15px 40px var(--shadow-color), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .contact-title {
@@ -121,11 +73,7 @@
   margin-bottom: var(--space-md);
   position: relative;
   display: inline-block;
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--accent-color)
-  );
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -162,9 +110,6 @@
 }
 
 .contact-method {
-  --method-bg: rgba(67, 97, 238, 0.05);
-  --method-scale: 1;
-  
   display: flex;
   align-items: center;
   gap: var(--space-md);
@@ -172,11 +117,8 @@
   text-decoration: none;
   padding: var(--space-md);
   border-radius: var(--border-radius-lg);
-  background: var(--method-bg);
+  background: rgba(67, 97, 238, 0.05);
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform: scale(var(--method-scale));
-  position: relative;
-  overflow: hidden;
   opacity: 0;
   animation: fadeInUp 0.6s ease forwards;
 }
@@ -193,23 +135,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
 
 .contact-method:hover {
-  --method-bg: rgba(67, 97, 238, 0.15);
-  --method-scale: 1.03;
-  
-  transform: translateX(10px) scale(var(--method-scale));
-  box-shadow: 
-    0 5px 15px var(--shadow-color),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  background: rgba(67, 97, 238, 0.15);
+  transform: translateX(10px);
+  box-shadow: 0 5px 15px var(--shadow-color), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .contact-method:hover::before {
@@ -237,7 +171,7 @@
 
 /* WhatsApp specific styles */
 .whatsapp {
-  --method-bg: rgba(37, 211, 102, 0.05);
+  background: rgba(37, 211, 102, 0.05);
 }
 
 .whatsapp .contact-icon {
@@ -246,7 +180,7 @@
 }
 
 .whatsapp:hover {
-  --method-bg: rgba(37, 211, 102, 0.15);
+  background: rgba(37, 211, 102, 0.15);
 }
 
 .whatsapp:hover .contact-icon {
@@ -256,32 +190,18 @@
 
 /* Contact Form - 3D Glass Panel */
 .contact-form {
-  --form-translate-z: 0px;
-  --form-rotate-y: 0deg;
-  
   background: rgba(var(--card-bg-rgb), 0.8);
   padding: var(--space-xxl);
   border-radius: var(--border-radius-xl);
-  box-shadow: 
-    0 15px 40px var(--shadow-color),
-    var(--form-glow),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 40px var(--shadow-color), var(--form-glow), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid rgba(255, 255, 255, 0.15);
-  transform: 
-    translateZ(var(--form-translate-z))
-    rotateY(var(--form-rotate-y));
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
-  animation: 
-    fadeInRight 0.8s 0.3s forwards,
-    float 6s ease-in-out infinite 0.5s;
+  animation: fadeInRight 0.8s 0.3s forwards, float 6s ease-in-out infinite 0.5s;
 }
 
 .contact-form:hover {
-  --form-translate-z: 30px;
-  --form-rotate-y: 3deg;
+  transform: translateZ(30px) rotateY(3deg);
   --form-glow: 0 0 50px rgba(67, 97, 238, 0.3);
 }
 
@@ -291,11 +211,7 @@
   text-align: center;
   position: relative;
   display: inline-block;
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--accent-color)
-  );
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -321,7 +237,6 @@
 .form-group {
   margin-bottom: var(--space-xl);
   position: relative;
-  transform-style: preserve-3d;
 }
 
 .form-group label {
@@ -330,7 +245,6 @@
   font-weight: 600;
   color: var(--text-color);
   transition: all 0.3s ease;
-  transform: translateZ(20px);
 }
 
 .form-group input,
@@ -345,7 +259,6 @@
   background: rgba(var(--card-bg-rgb), 0.5);
   color: var(--text-color);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   transform: translateZ(10px);
 }
 
@@ -353,9 +266,7 @@
 .form-group textarea:focus,
 .form-group select:focus {
   border-color: var(--primary-color);
-  box-shadow: 
-    0 0 0 3px rgba(67, 97, 238, 0.2),
-    inset 0 0 10px rgba(67, 97, 238, 0.1);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2), inset 0 0 10px rgba(67, 97, 238, 0.1);
   outline: none;
   transform: translateZ(20px);
 }
@@ -367,9 +278,6 @@
 
 /* Enhanced Submit Button */
 .submit-button {
-  --btn-depth: 5px;
-  --btn-glow: 0 0 20px rgba(67, 97, 238, 0.4);
-  
   background: var(--gradient);
   color: white;
   border: none;
@@ -386,13 +294,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  transform-style: preserve-3d;
-  transform: 
-    translateZ(0)
-    translateY(0);
-  box-shadow: 
-    0 var(--btn-depth) 0 0 color-mix(in oklab, var(--primary-color), black 25%),
-    var(--btn-glow);
+  box-shadow: 0 5px 0 0 color-mix(in oklab, var(--primary-color), black 25%);
   text-transform: uppercase;
   letter-spacing: 1px;
   z-index: 1;
@@ -405,22 +307,13 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: all 0.6s ease;
 }
 
 .submit-button:hover {
-  --btn-depth: 8px;
-  --btn-glow: 0 0 30px rgba(67, 97, 238, 0.6);
-  
-  transform: 
-    translateZ(20px)
-    translateY(-5px);
+  box-shadow: 0 8px 0 0 color-mix(in oklab, var(--primary-color), black 25%);
+  transform: translateY(-5px);
   letter-spacing: 2px;
 }
 
@@ -429,54 +322,7 @@
 }
 
 .submit-button:active {
-  --btn-depth: 2px;
-  
-  transform: 
-    translateZ(10px)
-    translateY(3px);
-}
-
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .contact-info,
-  .contact-form {
-    background: rgba(30, 30, 40, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  
-  .contact-info:hover,
-  .contact-form:hover {
-    box-shadow: 
-      0 15px 40px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      0 0 40px rgba(67, 97, 238, 0.2);
-  }
-  
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    background: rgba(40, 40, 50, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .contact-section::before,
-  .contact-section::after,
-  .contact-info,
-  .contact-form,
-  .contact-method {
-    animation: none !important;
-    transition: none !important;
-  }
-  
-  .contact-info,
-  .contact-form,
-  .contact-method {
-    opacity: 1;
-    transform: none;
-  }
+  transform: translateY(3px);
 }
 
 /* Container queries */
@@ -497,16 +343,6 @@
   .contact-method,
   .submit-button {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2 L30 16 L16 30 L2 16 Z" fill="none" stroke="%234361ee" stroke-width="2"/></svg>') 16 16, pointer;
-  }
-}
-
-/* Houdini paint worklet fallback */
-@supports (background: paint(something)) {
-  .contact-form {
-    --pattern-seed: 1234;
-    --pattern-colors: %234361ee, %233f37c9;
-    background-image: paint(crosshatch);
-    background-blend-mode: overlay;
   }
 }
 
@@ -533,24 +369,4 @@
       transform: translateX(0);
     }
   }
-}
-
-/* Shape-based decorative elements */
-.contact-info::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  right: -1px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 0 80px 80px;
-  border-color: transparent transparent var(--primary-color) transparent;
-  opacity: 0.1;
-  transition: opacity 0.6s ease;
-  z-index: -1;
-}
-
-.contact-info:hover::after {
-  opacity: 0.3;
 }

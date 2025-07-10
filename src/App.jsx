@@ -15,11 +15,8 @@ import "./global.css";
 import "./mobile.css";
 import "./css/3DEffects.css";
 import "./css/Footer.css";
-import "./css/GlassCard.css";
 import "./css/HoverEffects.css";
-import "./css/ScrollAnime.css";
 import "./css/WhatsApp.css";
-import "./css/ScrollAnime.css";
 
 // =================== Service Data ===================
 export const services = {

@@ -17,7 +17,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
 .navbar.open {
   --blur-amount: 16px;
   background-color: rgba(var(--nav-bg-rgb), 0.95);
@@ -249,8 +248,6 @@
     display: none;
   }
 
-
-
   .mobile-menu {
     padding: var(--space-xl) var(--space-md);
   }
@@ -283,4 +280,3 @@ body.dark .mobile-menu {
     transition: none !important;
   }
 }
-
